@@ -6,13 +6,18 @@
 	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
 </head>
 <body ng-controller="StoreController as store">
-    <div class="container">
+	<!-- ng-repeat - forEach of our array and 
+	ng-hide - hide if value - true
+	ng-show - show if value - true
+	-->
+    <div class="container" ng-hide="store.product.soldOut" ng-repeat="product in store.products">
     	<div class="product row">
 	      <h3>
-	        {{store.product.name}}
-	        <em class="pull-right">{{store.product.price}}</em>
+	        {{product.name}}
+	        <em class="pull-right">{{product.price}}</em>
 	      </h3>
 	    </div>
+	    <button ng-show="store.product.canPurchase">Add to cart</button>
     </div>
 	
 	<script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>

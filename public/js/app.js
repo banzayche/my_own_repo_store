@@ -5,13 +5,23 @@
 	// angular controller
 	app.controller('StoreController', function(){
 		// to declare new attribute "product" and create link to gem
-		this.product = gem;
+		this.products = gems;
 	});
 
 	// some data
-	var gem = {
-		name: 'Dodecahedron',
-		price: 2.95,
-		description: 'The best Dodecahedron of the World!'
-	};
+	var gems = [
+		{
+			name: 'Octopen',
+			price: 12.95,
+			description: 'The best Octopen of the World!',
+			canPurchase: false,
+			soldOut: false
+		}, {
+			name: 'Dodecahedron',
+			price: 2.95,
+			description: 'The best Dodecahedron of the World!',
+			canPurchase: false,
+			soldOut: false
+		}
+	];
 })();

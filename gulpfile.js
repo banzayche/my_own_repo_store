@@ -79,13 +79,13 @@ gulp.task('jstask', function(){
 
 // ---------------GULP WATCH---------------------------------------------------------------------------
 gulp.task('stream', function () {
-    watch('public/js/*.js', batch(function (events, done) {
-        gulp.start('jstask', done);        
-    }));
+    gulp.src('public/css/*.css')
+         .pipe(watch('public/css/*.css'))
+         .pipe(connect.reload());
 
-    watch('public/css/*.css', batch(function (events, done) {
-        gulp.start('csstask', done);
-    }));
+    gulp.src('public/js/*.js')
+         .pipe(watch('public/js/*.js'))
+         .pipe(connect.reload());
 
     gulp.src('public/*.html')
          .pipe(watch('public/*.**'))
