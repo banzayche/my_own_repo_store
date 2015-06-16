@@ -1,0 +1,12 @@
+.general{
+	max-width: 400px;
+}
+
+.gallery img{
+	display: block;
+	margin: 0 auto;
+}
+
+.small-image img{
+	  width: 70px;
+}

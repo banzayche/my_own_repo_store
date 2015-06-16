@@ -4,20 +4,55 @@
 	<title>Hello Angular</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body ng-controller="StoreController as store">
 	<!-- ng-repeat - forEach of our array and 
 	ng-hide - hide if value - true
 	ng-show - show if value - true
 	-->
-    <div class="container" ng-hide="store.product.soldOut" ng-repeat="product in store.products">
+    <div class="container general" ng-hide="store.product.soldOut" ng-repeat="product in store.products | orderBy: 'price'">
     	<div class="product row">
+  		<!-- now we don't use store, because we work with store.products part -->
 	      <h3>
 	        {{product.name}}
-	        <em class="pull-right">{{product.price}}</em>
+	        <em class="pull-right">{{product.price | currency}}</em>
 	      </h3>
 	    </div>
-	    <button ng-show="store.product.canPurchase">Add to cart</button>
+	    <!-- image gallery -->
+	    <div class="gallery" ng-show="product.images.length" ng-controller="GalleryController as gallery">
+	    	<img ng-src="{{product.images[gallery.current]}}" />
+	    </div>
+	    <ul class="img-thumbnails clearfix">
+          <li class="small-image pull-left thumbnail" ng-repeat="image in product.images">
+          	<!-- now we don't use product, because we work with product.images part -->
+            <img ng-src="{{image}}" />
+          </li>
+        </ul>
+
+
+        <section class="tab" ng-controller="TabController as tab">
+	        <ul class="nav nav-pills">
+	          <li ng-class="{ active: tab.isSet(1) }">
+	            <a href ng-click="tab.setTab(1)">Description</a></li>
+	          <li ng-class="{ active: tab.isSet(2) }">
+	            <a href ng-click="tab.setTab(2)">Specs</a></li>
+	          <li ng-class="{ active: tab.isSet(3) }">
+	            <a href ng-click="tab.setTab(3)">Reviews</a></li>
+	        </ul>
+	        <div ng-show="tab.isSet(1)">
+	          <h4>Description</h4>
+	          <blockquote>{{product.description}}</blockquote>
+	        </div>
+	        <div ng-show="tab.isSet(2)">
+	          <h4>Specs</h4>
+	          <blockquote>Shine: {{product.shine}}</blockquote>
+	        </div>
+	        <div ng-show="tab.isSet(3)">
+	          <h4>Reviews</h4>
+	          <blockquote></blockquote>
+	        </div>
+	      </section>
     </div>
 	
 	<script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
