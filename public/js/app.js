@@ -8,30 +8,6 @@
 		this.products = gems;
 	});
 
-	app.controller('GalleryController', function(){
-	  	this.current = 0;
-	    this.setCurrent = function(attr){
-	      if(attr){
-	      	this.current = attr;
-	      } else {
-	      	this.current = 0;
-	      }
-	    };
-	  });
-
-	// panel controller
-	app.controller('TabController', function(){
-		this.tab = 1;
-	    
-	    this.setTab = function(selectedTab){
-	      this.tab = selectedTab;
-	    };
-	    
-	    this.isSet = function(givenTab){
-	      return this.tab === givenTab;
-	    };
-	});
-
 	// comment controller
 	app.controller('ReviewController', function(){
 	    this.review = {};
@@ -43,6 +19,46 @@
 	      	this.review = {};
 	    };
 	  });
+
+	// product-galerry
+	app.directive("productGallery", function(){
+		return {
+			restrict: 'E',
+			templateUrl: "../html_layouts/product-gallery.html",
+			controller: function(){
+				this.current = 0;
+			    this.setCurrent = function(attr){
+			      if(attr){
+			      	this.current = attr;
+			      } else {
+			      	this.current = 0;
+			      }
+			    };
+			},
+			controllerAs: 'gallery'
+		};
+	});
+
+	// product-tabs
+	app.directive("productTabs", function(){
+		return {
+	      restrict: 'E',
+	      templateUrl: "../html_layouts/product-tabs.html",
+	      controller: function(){
+	      	this.tab = 1;
+	    
+		    this.setTab = function(selectedTab){
+		      this.tab = selectedTab;
+		    };
+		    
+		    this.isSet = function(givenTab){
+		      return this.tab === givenTab;
+		    };
+	      },
+
+	      controllerAs: 'tab',
+	    };
+	});
 
 	// for template
 	app.directive("productSpecs", function() {
