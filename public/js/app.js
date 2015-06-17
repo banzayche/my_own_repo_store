@@ -1,11 +1,11 @@
 (function () {
 	// angular module
 	var app = angular.module('store', ['store-products']);
-	
+	var products = [];
 	// angular controller
 	app.controller('StoreController', ['$http', function($http){
 			var store = this;
-			store.products = [];
+			store.products = products;
 
 			$http.get('/products.json').success(function(data){
 				store.products = data;
@@ -18,6 +18,7 @@
 	    
 	    this.addReview = function(product){
 	    	this.review.createdOn = Date.now();
+	    	console.log(this.review);
 	    	product.reviews.push(this.review);
 	      
 	      	this.review = {};

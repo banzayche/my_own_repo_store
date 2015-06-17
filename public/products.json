@@ -12,7 +12,19 @@
 		"http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-05.gif",
 		"http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-09.gif"
     ],
-    "reviews": []
+    "reviews": [
+      {
+           "stars": 5,
+           "body": "I love this gem!",
+           "author": "joe@example.org",
+           "createdOn": 1397490980837
+         }, {
+           "stars": 1,
+           "body": "This gem sucks.",
+           "author": "tim@example.org",
+           "createdOn": 1397490980837
+         }
+    ]
   },
   {
     "name": "Bloodstone",
@@ -27,7 +39,19 @@
 		"http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-03.gif",
 		"http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-04.gif"
     ],
-    "reviews": []
+    "reviews": [
+      {
+           "stars": 5,
+           "body": "I love this gem!",
+           "author": "joe@example.org",
+           "createdOn": 1397490980837
+         }, {
+           "stars": 1,
+           "body": "This gem sucks.",
+           "author": "tim@example.org",
+           "createdOn": 1397490980837
+         }
+    ]
   },
   {
     "name": "Zircon",
@@ -42,6 +66,18 @@
 		"http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-07.gif",
 		"http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-10.gif"
     ],
-    "reviews": []
+    "reviews": [
+      {
+           "stars": 5,
+           "body": "I love this gem!",
+           "author": "joe@example.org",
+           "createdOn": 1397490980837
+         }, {
+           "stars": 1,
+           "body": "This gem sucks.",
+           "author": "tim@example.org",
+           "createdOn": 1397490980837
+         }
+    ]
   }
 ]
