@@ -44,6 +44,21 @@
 	    };
 	  });
 
+	// for template
+	app.directive("productSpecs", function() {
+	    return {
+	      restrict: 'A',
+	      templateUrl: "../html_layouts/product-specs.html"
+	    };
+	});
+	// for template
+	app.directive("productReviews", function() {
+	    return {
+	      restrict: 'E',
+	      templateUrl: "../html_layouts/product-reviews.html"
+	    };
+	});
+
 	// some data
 	var gems = [
 		{
