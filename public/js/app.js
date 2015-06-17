@@ -1,12 +1,16 @@
 (function () {
 	// angular module
-	var app = angular.module('store', [ ]);
+	var app = angular.module('store', ['store-products']);
 	
 	// angular controller
-	app.controller('StoreController', function(){
-		// to declare new attribute "product" and create link to gem
-		this.products = gems;
-	});
+	app.controller('StoreController', ['$http', function($http){
+			var store = this;
+			store.products = [];
+
+			$http.get('/products.json').success(function(data){
+				store.products = data;
+			});
+		}]);
 
 	// comment controller
 	app.controller('ReviewController', function(){
@@ -20,132 +24,77 @@
 	    };
 	  });
 
-	// product-galerry
-	app.directive("productGallery", function(){
-		return {
-			restrict: 'E',
-			templateUrl: "../html_layouts/product-gallery.html",
-			controller: function(){
-				this.current = 0;
-			    this.setCurrent = function(attr){
-			      if(attr){
-			      	this.current = attr;
-			      } else {
-			      	this.current = 0;
-			      }
-			    };
-			},
-			controllerAs: 'gallery'
-		};
-	});
-
-	// product-tabs
-	app.directive("productTabs", function(){
-		return {
-	      restrict: 'E',
-	      templateUrl: "../html_layouts/product-tabs.html",
-	      controller: function(){
-	      	this.tab = 1;
-	    
-		    this.setTab = function(selectedTab){
-		      this.tab = selectedTab;
-		    };
-		    
-		    this.isSet = function(givenTab){
-		      return this.tab === givenTab;
-		    };
-	      },
-
-	      controllerAs: 'tab',
-	    };
-	});
-
-	// for template
-	app.directive("productSpecs", function() {
-	    return {
-	      restrict: 'A',
-	      templateUrl: "../html_layouts/product-specs.html"
-	    };
-	});
-	// for template
-	app.directive("productReviews", function() {
-	    return {
-	      restrict: 'E',
-	      templateUrl: "../html_layouts/product-reviews.html"
-	    };
-	});
-
 	// some data
-	var gems = [
-		{
-			name: 'Octopen',
-			price: 12.95,
-			description: 'The best Octopen of the World!',
-			specefication: 'Some specefication of Octopen.',
-			canPurchase: false,
-			soldOut: false,
-			images: [
-		        "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-02.gif",
-		        "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-05.gif",
-		        "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-09.gif"
-		      ],
-		    reviews: [{
-		        stars: 5,
-		        body: "I love this gem!",
-		        author: "joe@example.org",
-		        createdOn: 1397490980837
-		      }, {
-		        stars: 1,
-		        body: "This gem sucks.",
-		        author: "tim@example.org",
-		        createdOn: 1397490980837
-		      }],
-		}, {
-			name: 'Dodecahedron',
-			price: 32,
-			description: 'The best Dodecahedron of the World!',
-			specefication: 'Specefication of Dodecahedron.',
-			canPurchase: false,
-			soldOut: false,
-			images: [
-		        "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-01.gif",
-		        "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-03.gif",
-		        "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-04.gif"
-		      ],
-		    reviews: [{
-		        stars: 5,
-		        body: "I love this gem!",
-		        author: "joe@example.org",
-		        createdOn: 1397490980837
-		      }, {
-		        stars: 1,
-		        body: "This gem sucks.",
-		        author: "tim@example.org",
-		        createdOn: 1397490980837
-		      }],
-		}, {
-			name: 'Collider',
-			price: 112.95,
-			description: 'The best Collider of the World!',
-			specefication: 'Wery nice Collider',
-			canPurchase: false,
-			soldOut: false,
-			images: [
-		        "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-06.gif",
-		        "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-07.gif",
-		        "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-10.gif"
-		      ],
-		    reviews: [{
-		        stars: 5,
-		        body: "I love this gem!",
-		        author: "joe@example.org",
-		        createdOn: 1397490980837
-		      }, {
-		        stars: 1,
-		        body: "This gem sucks.",
-		        author: "tim@example.org",
-		        createdOn: 1397490980837
-		      }],
-		},
-	];
+	// var gems = [
+	// 	{
+	// 		name: 'Octopen',
+	// 		price: 12.95,
+	// 		description: 'The best Octopen of the World!',
+	// 		specefication: 'Some specefication of Octopen.',
+	// 		canPurchase: false,
+	// 		soldOut: false,
+	// 		images: [
+	// 	        "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-02.gif",
+	// 	        "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-05.gif",
+	// 	        "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-09.gif"
+	// 	      ],
+	// 	    reviews: [{
+	// 	        stars: 5,
+	// 	        body: "I love this gem!",
+	// 	        author: "joe@example.org",
+	// 	        createdOn: 1397490980837
+	// 	      }, {
+	// 	        stars: 1,
+	// 	        body: "This gem sucks.",
+	// 	        author: "tim@example.org",
+	// 	        createdOn: 1397490980837
+	// 	      }],
+	// 	}, {
+	// 		name: 'Dodecahedron',
+	// 		price: 32,
+	// 		description: 'The best Dodecahedron of the World!',
+	// 		specefication: 'Specefication of Dodecahedron.',
+	// 		canPurchase: false,
+	// 		soldOut: false,
+	// 		images: [
+	// 	        "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-01.gif",
+	// 	        "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-03.gif",
+	// 	        "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-04.gif"
+	// 	      ],
+	// 	    reviews: [{
+	// 	        stars: 5,
+	// 	        body: "I love this gem!",
+	// 	        author: "joe@example.org",
+	// 	        createdOn: 1397490980837
+	// 	      }, {
+	// 	        stars: 1,
+	// 	        body: "This gem sucks.",
+	// 	        author: "tim@example.org",
+	// 	        createdOn: 1397490980837
+	// 	      }],
+	// 	}, {
+	// 		name: 'Collider',
+	// 		price: 112.95,
+	// 		description: 'The best Collider of the World!',
+	// 		specefication: 'Wery nice Collider',
+	// 		canPurchase: false,
+	// 		soldOut: false,
+	// 		images: [
+	// 	        "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-06.gif",
+	// 	        "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-07.gif",
+	// 	        "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-10.gif"
+	// 	      ],
+	// 	    reviews: [{
+	// 	        stars: 5,
+	// 	        body: "I love this gem!",
+	// 	        author: "joe@example.org",
+	// 	        createdOn: 1397490980837
+	// 	      }, {
+	// 	        stars: 1,
+	// 	        body: "This gem sucks.",
+	// 	        author: "tim@example.org",
+	// 	        createdOn: 1397490980837
+	// 	      }],
+	// 	},
+	// ];
 })();
