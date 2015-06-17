@@ -3,7 +3,7 @@
 	var app = angular.module('store', ['store-products']);
 	var products = [];
 	// angular controller
-	app.controller('StoreController', ['$http', function($http){
+	app.controller('StoreController', ['$http', '$scope', function($http, $scope){
 			var store = this;
 			store.products = products;
 
