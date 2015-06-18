@@ -13,12 +13,14 @@
     </header>
     <div class="list-group">
       <div class="list-group-item" ng-repeat="product in store.products">
-        <h3>{{product.name}} <em class="pull-right">{{product.price | currency}}</em></h3>
-		
+
+      	<!-- title vs price -->
+        <h3>{{product.name}} <em class="pull-right">{{product.price | currency}}</em></h3>		
 		<!-- gallery -->
 		<product-gallery></product-gallery>
-        <!-- ng-controller="TabController as tab" -->
+        <!-- tabs -->
         <product-tabs></product-tabs>
+      
       </div>
     </div>
 	

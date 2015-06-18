@@ -1,0 +1,8 @@
+{
+  "name": "myProject",
+  "version": "1.0.0",
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "angular": "~1.4.1"
+  }
+}
