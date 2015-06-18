@@ -10,9 +10,19 @@
     <header>
       <h1 class="text-center">Flatlander Crafted Gems</h1>
       <h2 class="text-center">– an Angular store –</h2>
-    </header>
+    </header>    
     <div class="list-group">
-      <div class="list-group-item" ng-repeat="product in store.products">
+      <!-- adding filter attribute -->
+      <div class="form-group">
+    	<label>Search</label><input class="form-control" type="text" ng-model="query" placeholder="Input the search word" />
+    	<label>Sort by:</label>
+		<select ng-model="orderProp" class="form-control">
+		  <option value="name">Alphabetical</option>
+		  <option value="rarity">Rarity</option>
+		</select>
+      </div>
+      <!-- In " | filter:query" we use added filter attribute.-->
+      <div class="list-group-item" ng-repeat="product in products | filter:query | orderBy:orderProp">
 
       	<!-- title vs price -->
         <h3>{{product.name}} <em class="pull-right">{{product.price | currency}}</em></h3>		

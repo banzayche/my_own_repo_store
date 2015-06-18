@@ -4,18 +4,19 @@
 	var products = [];
 	// angular controller
 	app.controller('StoreController', ['$http', '$scope', function($http, $scope){
-			var store = this;
-			store.products = products;
+			$scope.products = products;
 
 			$http.get('/api/books').success(function(data){
-				store.products = data;
+				$scope.products = data;
 			});
-		}]);
+
+			$scope.orderProp = 'rarity';
+	}]);
 
 	// comment controller
 	app.controller('ReviewController', ['$http', function($http){
 	    this.review = {};
-	    
+
 	    this.addReview = function(product){
 	    	var productId = product.id;
 	    	this.review.createdOn = Date.now();

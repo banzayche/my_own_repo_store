@@ -21,23 +21,27 @@
 		};
 	});
 
+	app.controller("productTabs", ["$scope", function ($scope){
+			$scope.tab = 1;
+	    	
+			$scope.test = true;
+			console.log($scope.test);
+
+		    $scope.setTab = function(selectedTab){
+		      this.tab = selectedTab;
+		    };
+		    
+		    $scope.isSet = function(givenTab){
+		      return $scope.tab === givenTab;
+		    };
+	}]);
+
 	// product-tabs
 	app.directive("productTabs", function(){
 		return {
 	      restrict: 'E',
 	      templateUrl: "../html_layouts/product-tabs.html",
-	      controller: function(){
-	      	this.tab = 1;
-	    
-		    this.setTab = function(selectedTab){
-		      this.tab = selectedTab;
-		    };
-		    
-		    this.isSet = function(givenTab){
-		      return this.tab === givenTab;
-		    };
-	      },
-
+	      controller: "productTabs",
 	      controllerAs: 'tab',
 	    };
 	});

@@ -25,6 +25,11 @@ exports.productsList = function() {
                    "body": "This gem sucks.",
                    "author": "tim@example.org",
                    "createdOn": 1397490980837
+                 }, {
+                   "stars": 5,
+                   "body": "This gem is my!",
+                   "author": "serg_5nizza@mail.ru",
+                   "createdOn": 1397490980837
                  }
             ]
           },
