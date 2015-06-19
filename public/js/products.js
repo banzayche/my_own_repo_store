@@ -31,6 +31,13 @@
 		    $scope.isSet = function(givenTab){
 		      return $scope.tab === givenTab;
 		    };
+
+		    // images
+			$scope.setImage = function(imageUrl) {
+			    $scope.mainImageUrl = imageUrl;
+			    console.log($scope.mainImageUrl);
+			}
+			// end images		 
 	}]);
 
 	// product-tabs

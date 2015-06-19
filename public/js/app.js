@@ -34,7 +34,8 @@
 				$scope.products = data;
 				products = $scope.products;
 			});
-		}		
+		}
+
 		$scope.orderProp = 'rarity';
 
 		// testing dependency injection
