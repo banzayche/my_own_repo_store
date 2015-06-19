@@ -10,33 +10,30 @@
     <header>
       <h1 class="text-center">Flatlander Crafted Gems</h1>
       <h2 class="text-center">– an Angular store –</h2>
-    </header>    
-    <div class="list-group">
-      <!-- adding filter attribute -->
-      <div class="form-group">
-    	<label>Search</label><input class="form-control" type="text" ng-model="query" placeholder="Input the search word" />
-    	<label>Sort by:</label>
-		<select ng-model="orderProp" class="form-control">
-		  <option value="name">Alphabetical</option>
-		  <option value="rarity">Rarity</option>
-		</select>
+    </header>
+    <div class="panel panel-success info-routes">
+      <div class="panel-heading">
+        <h3 class="panel-title">Информация о роутах</h3>
       </div>
-      <!-- In " | filter:query" we use added filter attribute.-->
-      <div class="list-group-item" ng-repeat="product in products | filter:query | orderBy:orderProp">
+      <div class="panel-body">
+      	<ul>
+	        <li><span>$location.path(): </span><span class="h4 text-danger">{{$location.$$path}}</span></li>
+	        <li><span>$route.current.templateUrl: </span><span class="h4 text-danger">{{$route.current.templateUrl}}</span></li>
+	        <li><span>$route.current.params: </span><span class="h4 text-danger">{{$route.current.params}}</span></li>
+	        <li><span>$route.current.$$route.controller: </span><span class="h4 text-danger">{{$route.current.$$route.controller}}</span></li>
+	        <li><span>$routeParams: </span><span class="h4 text-danger">{{$routeParams}}</span></li>
 
-      	<!-- title vs price -->
-        <h3>{{product.name}} <em class="pull-right">{{product.price | currency}}</em></h3>		
-		<!-- gallery -->
-		<product-gallery></product-gallery>
-        <!-- tabs -->
-        <product-tabs></product-tabs>
-      
+	        <li><span>filter test (value is - {{filterTest}}): </span><span class="h4 text-danger">{{filterTest | checkmark}}</span></li>
+	     </ul>
       </div>
     </div>
-	
+    <!-- This is general view of my app. All changes will be happening here. -->
+	<div ng-view class="s-6"></div>
+
 	<script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
 	<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
 	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/angular-route/angular-route.js"></script>
 	
 	<script type="text/javascript" src="js/app.js"></script>
 	<script type="text/javascript" src="js/products.js"></script>

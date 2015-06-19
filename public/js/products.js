@@ -24,9 +24,6 @@
 	app.controller("productTabs", ["$scope", function ($scope){
 			$scope.tab = 1;
 	    	
-			$scope.test = true;
-			console.log($scope.test);
-
 		    $scope.setTab = function(selectedTab){
 		      this.tab = selectedTab;
 		    };

@@ -1,5 +1,5 @@
 /*general styles*/
-.list-group{
+.list-group, .s-6, .info-routes{
 	max-width: 600px;
 	margin: 0 auto;
 }
@@ -34,4 +34,7 @@ product-reviews ul{
 }
 .ng-dirty.ng-valid{
 	border-color: #78FA89;
+}
+.btn{
+	  margin: 20px 0 !important;
 }
