@@ -1,14 +1,24 @@
 <!--  Product Reviews List -->
 <ul>
-  <h4>Reviews</h4>
-  <li ng-repeat="review in product.reviews">
-    <blockquote>
-      <strong>{{review.stars}} Stars</strong>
-      {{review.body}}
-      <buttn class="btn btn-success">Edit</buttn>
-      <cite class="clearfix">—{{review.author}} on {{review.createdOn | date}}</cite>      
-    </blockquote>
-  </li>  
+      <h4>Reviews</h4>
+      <li ng-repeat="review in product.reviews" ng-controller="ReviewController">
+        <blockquote>
+          <strong>{{review.stars}} Stars</strong>
+          {{review.body}}
+          <cite class="clearfix">—{{review.author}} on {{review.createdOn | date}}</cite>
+        </blockquote>
+        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+            <h4 class="text-center">You can change the body of review in real time! =)<br /> All changes will save on server side</h4>
+            <input ng-change="change($index, review)" type="text" ng-model="review.body" class="form-control" />
+        </div>
+        <div>
+          <h4>Changed</h4>
+          <span class="h4">index: </span> {{lastindex}}<br />
+          <span class="h4">body: </span> {{lastbodyreview}}<br />
+          <span class="h4">date: </span> {{reviewdate}}<br />
+          <span class="h4">id: </span> {{productId}}
+        </div>
+      </li>
 </ul>
 
 <!--  Review Form -->
@@ -18,7 +28,7 @@
   <blockquote >
     <strong>{{reviewCtrl.review.stars}} Stars</strong>
     {{reviewCtrl.review.body}}
-    <cite class="clearfix">—{{reviewCtrl.review.author}}</cite>    
+    <cite class="clearfix">—{{reviewCtrl.review.author}}</cite>
   </blockquote>
 
   <!--  Review Form -->

@@ -17,16 +17,19 @@ exports.productsList = function() {
             "reviews": [
               {
                    "stars": 5,
+                   "productId": 0,
                    "body": "I love this gem!",
                    "author": "joe@example.org",
                    "createdOn": 1397490980837
                  }, {
                    "stars": 1,
+                   "productId": 0,
                    "body": "This gem sucks.",
                    "author": "tim@example.org",
                    "createdOn": 1397490980837
                  }, {
                    "stars": 5,
+                   "productId": 0,
                    "body": "This gem is my!",
                    "author": "serg_5nizza@mail.ru",
                    "createdOn": 1397490980837
@@ -50,11 +53,13 @@ exports.productsList = function() {
             "reviews": [
               {
                    "stars": 5,
+                   "productId": 1,
                    "body": "I love this gem!",
                    "author": "joe@example.org",
                    "createdOn": 1397490980837
                  }, {
                    "stars": 1,
+                   "productId": 1,
                    "body": "This gem sucks.",
                    "author": "tim@example.org",
                    "createdOn": 1397490980837
@@ -78,11 +83,13 @@ exports.productsList = function() {
             "reviews": [
               {
                    "stars": 5,
+                   "productId": 2,
                    "body": "I love this gem!",
                    "author": "joe@example.org",
                    "createdOn": 1397490980837
                  }, {
                    "stars": 1,
+                   "productId": 2,
                    "body": "This gem sucks.",
                    "author": "tim@example.org",
                    "createdOn": 1397490980837

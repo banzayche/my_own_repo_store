@@ -1,6 +1,7 @@
 (function () {
 	// angular module
-	var app = angular.module('store', ['ngRoute', 'store-products'], function($routeProvider, $locationProvider){
+	var app = angular.module('store', ['ngRoute', 'store-products', 'urlGemServices'], ['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
+		// $locationProvider.html5Mode(true);
 		$routeProvider.
 	      when('/', {
 	        templateUrl: '../html_layouts/general-one.html',
@@ -13,27 +14,25 @@
 	      otherwise({
 	        redirectTo: '/'
 	      });
-	});
+	}]);
 
 	// test of creating of filter
 	app.filter('checkmark', function() {
 		return function(input) {
 		    return input ? 'choosed true' : 'choosed false';
 		};
-	});		
+	});
 	// end creating of filter
 
 	var products = [];
 	// angular controller
-	app.controller('StoreController', ['$scope', '$route', '$routeParams', '$location', '$http', function ($scope, $route, $routeParams, $location, $http){
+	app.controller('StoreController', ['$scope', '$route', '$routeParams', '$location', '$http', 'Gems', function ($scope, $route, $routeParams, $location, $http, Gems){
 		$scope.products = products;
-		if(products.length >= 1){
+				if(products.length >= 1){
 			console.log('full array');
 		} else{
-			$http.get('/api/books').success(function(data){
-				$scope.products = data;
-				products = $scope.products;
-			});
+			$scope.products = Gems.query();
+			products = $scope.products;
 		}
 
 		$scope.orderProp = 'rarity';
@@ -46,7 +45,7 @@
 	  	$scope.$location = $location;
 	 	// console.log('Location is: ');
 		// console.log($scope.$location);
-	  	
+
 	  	$scope.$routeParams = $routeParams;
 	 	// console.log('Prams is: ');
 		// console.log($scope.$routeParams);
@@ -57,54 +56,42 @@
 	}]);
 
 	// comment controller
-	app.controller('ReviewController', ['$http', function($http){
+	app.controller('ReviewController', ['$http', '$scope', function($http, $scope){
 	    this.review = {};
 
 	    this.addReview = function(product){
 	    	var productId = product.id;
 	    	this.review.createdOn = Date.now();
+	    	this.review.productId = productId;
 	    	product.reviews.push(this.review);
-	      	
+
 	      	$http.post('/api/books/'+productId+'/reviews', this.review).success(function(data){
 				console.log('Review is saved successfully! Pa-ra-ram-pam-pam:)');
 			});
 
-	      	this.review = {};	      	
+	      	this.review = {};
+	    };
+
+
+	    $scope.lastindex = '-';
+	    $scope.lastbodyreview = 'none';
+	    $scope.reviewdate = 'none';
+	    $scope.productId = 'none';
+	    $scope.change = function(index, review){
+	      	$scope.lastindex = index;
+	    	$scope.lastbodyreview = review.body;
+	    	$scope.reviewdate = review.createdOn;
+	    	$scope.productId = review.productId;
+
+	    	var putData = {
+	    		"id": $scope.productId,
+	    		"date": $scope.reviewdate,
+	    		"body": $scope.lastbodyreview,
+	    		"index": $scope.lastindex
+	    	};
+	    	$http.put('/api/books/'+$scope.productId+'/reviews/'+$scope.reviewdate, putData).success(function(data){
+				console.log('Review is resaved successfully! Pa-ra-ram-pam-pam:)');
+			});
 	    };
 	  }]);
-
-	// app.config(['$routeProvider',
-	//   function($routeProvider, $location) {
-	//     $routeProvider.
-	//       when('/home', {
-	//         templateUrl: '../html_layouts/general-one.html',
-	//         // controller: ['productTabs']
-	//       }).
-	//       when('/products', {
-	//         templateUrl: '../html_layouts/general-two.html',
-	//         controller: 'StoreController'
-	//       }).
-	//       otherwise({
-	//         redirectTo: '/home'
-	//       });
-	//   }]);
-// ---------------------------------
-// routing
-// ---------------------------------
-	// app.config(['$routerProvider', '$locationProvider', function ($routerProvider, $locationProvider){
-	// 	$routerProvider
-	// 		when('/', {
-	// 			controller: 'ListController',
-	// 			templateUrl: 'views/list.html'
-	// 		})
-	// 		when('/letter/:letter', {
-	// 			controller: 'LetterController',
-	// 			templateUrl: 'views/letter.html'
-	// 		})
-	// 	.otherwise({
-	// 		redirect: '/'
-	// 	});
-	// 	#locationProvider
-	// 		.html5Mode(false);
-	// }]);
 })();
