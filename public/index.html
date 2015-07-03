@@ -1,12 +1,12 @@
 <!doctype html>
-<html ng-app="store">
+<html ng-app="store" ng-controller="storeCtrl as store">
 <head>
-	<title>Hello Angular</title>
+	<title>{{storeTitle}}</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
-<body ng-controller="storeCtrl as store">
+<body>
 	<!-- navabar header -->
 	<div class="header-wrap">
 		<div class="container">
@@ -19,7 +19,7 @@
                 </button>
 
 				<img class="logo-gem" src="http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-05.gif" />
-                <a href="index.php" class="navbar-brand">Gems Shop</a>
+                <a href="index.php" class="navbar-brand">{{storeTitle}}</a>
             </div>
 
             <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">

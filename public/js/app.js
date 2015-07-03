@@ -5,6 +5,7 @@
 	var products = [];
 
 	generalModule.controller('storeCtrl', ['$scope', '$route', '$routeParams', '$location', '$http', function ($scope, $route, $routeParams, $location, $http){
+		$scope.storeTitle = 'Magic Things Shop';
 		$scope.query = '';
 		$scope.orderProp = 'name';
 		$http.get('/api/books').success(function(data){
