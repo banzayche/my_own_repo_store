@@ -4,7 +4,7 @@
 	directivesModule.directive("productsList", function(){
 		return {
 			restrict: 'AE',
-			templateUrl: '../html_layouts/products-list.html'
+			templateUrl: '../html_layouts/products-list-home.html'
 		}
 	});
 

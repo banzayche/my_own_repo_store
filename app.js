@@ -112,4 +112,4 @@ app.post('/api/books/:id/reviews', function(req, res) {
 
 // адресс порта
 app.listen(8300);
-console.log('Server side has been started')
+console.log('Server side has been started on http://localhost:8300')

@@ -1,17 +1,42 @@
 (function(){
-	var generalModule = angular.module('store', ['ngRoute', 'ngResource', 'directivesModule']);
+	var generalModule = angular.module('store', ['ngRoute','ui.directives','ui.filters','ngAnimate', 'ngResource', 'directivesModule', 'filtersModule'], ['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
+		// $locationProvider.html5Mode(true);
+		$routeProvider
+		  .when('/', {
+	        templateUrl: '../html_layouts/home.html',
+	      })
+	      .when('/contact-us', {
+	        templateUrl: '../html_layouts/contact-us.html',
+	      })
+	      .when('/category/:categoryName', {
+	        templateUrl: '../html_layouts/categories.html',
+	        controller: 'testRoute',
+	      })
+	      .otherwise({
+	        redirectTo: '/'
+	      });
+	}]);
 
 	// array of products
 	var products = [];
+
 
 	generalModule.controller('storeCtrl', ['$scope', '$route', '$routeParams', '$location', '$http', function ($scope, $route, $routeParams, $location, $http){
 		$scope.storeTitle = 'Magic Things Shop';
 		$scope.query = '';
 		$scope.orderProp = 'name';
+		$scope.limitPositions = 2;
 		$http.get('/api/books').success(function(data){
 			$scope.products = data;
 			console.log($scope.products);
 		});
+	}]);
+
+	generalModule.controller('testRoute', ['$scope', '$route', '$routeParams', '$location', '$http', function ($scope, $route, $routeParams, $location, $http){
+		console.log($routeParams.categoryName);
+		console.log($route.current.params.categoryName);
+		$scope.limitPositions = '';
+		$scope.categoryName = $routeParams.categoryName;
 	}]);
 })();
 

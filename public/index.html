@@ -5,6 +5,7 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="bower_components/angular-ui/build/angular-ui.min.css">
 </head>
 <body>
 	<!-- navabar header -->
@@ -19,16 +20,22 @@
                 </button>
 
 				<img class="logo-gem" src="http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-05.gif" />
-                <a href="index.php" class="navbar-brand">{{storeTitle}}</a>
+                <a href="#/" class="navbar-brand">{{storeTitle}}</a>
             </div>
 
             <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
                 <div class="row">
                     <div class="col-md-9 col-sm-9 col-xs-6">
                         <ul class="nav navbar-nav">
-                            <li><a href="#">Home Page</a></li>
-                            <li><a href="#">All categories</a></li>
-                            <li class="active"><a href="#">Contact Us</a></li>
+                            <li><a href="#/">Home Page</a></li>
+                            <li><a>All categories</a>
+								<ul>
+									<li ng-repeat="product in products | unique:'category'">
+										<a ng-href={{'#/category/'+product.category}}>{{product.category}}</a>
+									</li>
+								</ul>
+                            </li>
+                            <li class="active"><a href="#/contact-us">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -36,24 +43,9 @@
     	</div>
 	</div>
     <!-- /navabar header -->
-	<!-- select panel -->
-	<div class="select-panel form-group col-md-12 col-sm-12 col-xs-12">
-    	<div class="col-md-6 col-sm-6 col-xs-12">
-    		<label>Search</label><input class="form-control" type="text" ng-model="query" placeholder="Input the search word" />
-    	</div>
-    	<div class="col-md-6 col-sm-6 col-xs-12">
-    		<label>Sort by:</label>
-			<select ng-model="orderProp" class="form-control">
-			  <option value="name">Alphabetical</option>
-			  <option value="rarity">Rarity</option>
-			</select>
-    	</div>
-    </div>
-	<!-- /select panel -->
-
 
     <!-- This is general view of my app. All changes will be happening here. -->
-	<div products-list class="s-6 container"></div>
+	<div ng-view class="container main"></div>
 	<!-- /This is general view of my app. All changes will be happening here. -->
 
 	<!-- footer -->
@@ -88,10 +80,13 @@
 	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
 	<script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script>
 	<script type="text/javascript" src="bower_components/angular-resource/angular-resource.js"></script>
+	<script type="text/javascript" src="bower_components/angular-animate/angular-animate.js"></script>
+	<script type="text/javascript" src="bower_components/angular-ui/build/angular-ui.min.js"></script>
 
 	<script type="text/javascript" src="js/app.js"></script>
 	<script type="text/javascript" src="js/products.js"></script>
 	<script type="text/javascript" src="js/services.js"></script>
 	<script type="text/javascript" src="js/directives.js"></script>
+	<script type="text/javascript" src="js/filters.js"></script>
 </body>
 </html>

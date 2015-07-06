@@ -1,0 +1,16 @@
+<!-- select panel -->
+	<div class="select-panel form-group col-md-12 col-sm-12 col-xs-12">
+    	<div class="col-md-6 col-sm-6 col-xs-12">
+    		<label>Search</label><input class="form-control" type="text" ng-model="query" placeholder="Input the search word" />
+    	</div>
+    	<div class="col-md-6 col-sm-6 col-xs-12">
+    		<label>Sort by:</label>
+			<select ng-model="orderProp" class="form-control">
+			  <option value="name">Alphabetical</option>
+			  <option value="rarity">Rarity</option>
+			</select>
+    	</div>
+    </div>
+	<!-- /select panel -->
+<h2 class="category-name text-center text-primary">{{categoryName}}</h2>
+<div products-list></div>
