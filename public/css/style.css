@@ -20,8 +20,9 @@ nav>li{
 	position: relative;
 }
 nav li ul{
-	display: none;
+	position: absolute;
 	opacity: 0;
+	z-index: -10;
 }
 nav li:hover ul{
 	display: block;
@@ -36,6 +37,11 @@ nav li:hover ul{
 	-ms-box-shadow: 1px 1px 2px grey;
 	list-style: none;
 	opacity: 1;
+	z-index: 10;
+	-webkit-transition: opacity .5s;
+	-moz-transition: opacity .5s;
+	-ms-transition: opacity .5s;
+	transition: opacity .5s;
 }
 nav li ul>li{
 	padding: 5px;
@@ -65,7 +71,7 @@ nav li ul>li>a:hover{
 
 /*main*/
 .main{
-	min-height: 83%;
+	min-height: 87%;
 }
 .category-name{
 	text-transform: capitalize;
@@ -124,6 +130,43 @@ nav li ul>li>a:hover{
 	-moz-box-shadow: 1px 2px 2px grey;
 	-ms-box-shadow: 1px 2px 2px grey;
 }
+.detail-product img{
+	width: 100%;
+}
+.haracters-product{
+	border-radius: 5px;
+	background-color: rgba(4,4,4,.1);
+	padding: 10px;
+	margin-top: 30px;
+}
+.item-thing-galery{
+ 	display: block;
+  	float: left;
+ 	width: 100%;
+ 	list-style: none;
+ 	padding-left: 0;
+ 	padding-top: 20px;
+ }
+ .item-thing-galery>li{
+ 	display: block;
+ 	float: left;
+ 	width: 33%;
+  	padding-left: 2px;
+  	cursor: pointer;
+  	transition: transform 0.3s;
+	-webkit-transition: transform 0.3s;
+	-moz-transition: transform 0.3s;
+	-ms-transition: transform 0.3s;
+ }
+  .item-thing-galery>li:hover{
+	transform: scale(1.2);
+	-webkit-transform: scale(1.2);
+	-moz-transform: scale(1.2);
+	-ms-transform: scale(1.2);
+  }
+ .item-thing-galery>li>img{
+
+ }
 
 /*footer*/
 footer{

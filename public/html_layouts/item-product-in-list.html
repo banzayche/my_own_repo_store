@@ -3,4 +3,4 @@
 	<div class="col-sm-4 col-md-4 col-xs-4"><img ng-src="{{product.images[0]}}" /></div>
 	<div class="col-sm-8 col-md-8 col-xs-8"><p>{{product.description}}</p></div>
 </div>
-<a class="btn btn-primary pull-right">Detail</a>
+<a ng-href="#/category/{{product.category}}/{{product.id}}" class="btn btn-primary pull-right">Detail</a>
