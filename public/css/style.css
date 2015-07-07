@@ -19,6 +19,9 @@ body{
 nav>li{
 	position: relative;
 }
+nav li{
+	cursor: pointer;
+}
 nav li ul{
 	position: absolute;
 	opacity: 0;

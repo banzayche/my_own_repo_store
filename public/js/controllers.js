@@ -1,4 +1,4 @@
-var controllersModule = angular.module('controllersModule', ['ngRoute','ui.directives','ui.filters','ngAnimate', 'ngResource']);
+var controllersModule = angular.module('controllersModule', ['underscore','ngRoute','ui.directives','ui.filters','ngAnimate', 'ngResource']);
 controllersModule.controller('StoreCtrl', ['$scope', '$route', '$routeParams', '$location', '$http', function ($scope, $route, $routeParams, $location, $http){
 	$scope.storeTitle = 'Magic Things Shop';
 	$scope.query = '';
@@ -15,6 +15,11 @@ controllersModule.controller('CategoryRoute', ['$scope', '$route', '$routeParams
 	$scope.categoryName = $routeParams.categoryName;
 }]);
 
+controllersModule.controller('AllCategoryCtrl', ['$scope', '$route', '$routeParams', '$location', '$http', function ($scope, $route, $routeParams, $location, $http){
+	$scope.limitPositions = '';
+	$scope.categoryName = '';
+}]);
+
 controllersModule.controller('DetailRoute', ['$scope', '$route', '$routeParams', '$location', '$http', function ($scope, $route, $routeParams, $location, $http){
 	$scope.currentProduct = $scope.products[$routeParams.idProduct];
 	$scope.currentImg = $scope.currentProduct.images[0];
@@ -29,10 +34,16 @@ controllersModule.controller('ReviewsCtrl', ['$scope', '$route', '$routeParams',
 
 	$scope.addReview = function(product){
 	   	$scope.review.createdOn = Date.now();
-	   	$scope.review.productId = product.id;
+	   	if(product.reviews[(product.reviews.length)-1]){
+	   		$scope.review.reviewId = (product.reviews[(product.reviews.length)-1].reviewId)+1;
+	   	} else{
+	   		$scope.review.reviewId = 0;
+	   	}
+
+
 	   	product.reviews.push($scope.review);
 
-		$http.post('/api/books/'+$scope.review.productId+'/reviews', $scope.review).success(function(data){
+		$http.post('/api/books/'+product.id+'/reviews', $scope.review).success(function(data){
 			console.log('Review is saved successfully! Pa-ra-ram-pam-pam:)');
 		});
 
@@ -40,11 +51,31 @@ controllersModule.controller('ReviewsCtrl', ['$scope', '$route', '$routeParams',
 	};
 
 	$scope.deleteReview = function(product, reviewPosition){
-	   	$scope.review.productId = product.id;
 	   	product.reviews.splice(reviewPosition, 1);
 
-		$http.delete('/api/books/'+$scope.review.productId+'/reviews/'+reviewPosition, []).success(function(data){
+		$http.delete('/api/books/'+product.id+'/reviews/'+reviewPosition, []).success(function(data){
 			console.log('Deleted successfully! Pa-ra-ram-pam-pam:)');
 		});
 	}
+}]);
+
+controllersModule.controller('EditProductsRoute', ['$scope', '$route', '$routeParams', '$location', '$http', '_', function ($scope, $route, $routeParams, $location, $http, _){
+	$scope.limitPositions = '';
+	$scope.categoryName = '';
+	$scope.displayEditButton = true;
+
+	$scope.deleteProduct = function(product, products){
+		// id generator
+		// var id = _.map(products, function(product){return product.id;});
+		// id = Math.max.apply(null, id);
+
+		products.splice(products.indexOf(product), 1);
+		$http.delete('/api/books/'+product.id, []).success(function(data){
+			console.log('Deleted successfully! Pa-ra-ram-pam-pam:)');
+		});
+	}
+}]);
+
+controllersModule.controller('EditCurrentProductRoute', ['$scope', '$route', '$routeParams', '$location', '$http', function ($scope, $route, $routeParams, $location, $http){
+	console.log('EditCurrentProductRoute');
 }]);

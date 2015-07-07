@@ -111,6 +111,20 @@ app.delete('/api/books/:id/reviews/:index', function(req, res) {
 
 });
 
+app.delete('/api/books/:id', function(req, res) {
+    var book = books.filter(function(book) { return book.id == req.params.id; })[0];
+
+    if(!book) {
+        res.statusCode = 404;
+        return res.json({ msg: "Book does not exist" });
+    }
+
+    books.splice(books.indexOf(book), 1);
+
+    res.statusCode = 204;
+    res.send({});
+});
+
 // app.delete('/api/books/:id', function(req, res) {
 //     var book = books.filter(function(book) { return book.id == req.params.id; })[0];
 

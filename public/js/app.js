@@ -8,6 +8,10 @@
 	      .when('/contact-us', {
 	        templateUrl: '../html_layouts/contact-us.html',
 	      })
+	      .when('/category/all', {
+	      	templateUrl: '../html_layouts/categories.html',
+	      	controller: 'AllCategoryCtrl'
+	      })
 	      .when('/category/:categoryName', {
 	        templateUrl: '../html_layouts/categories.html',
 	        controller: 'CategoryRoute',
@@ -15,6 +19,14 @@
 	      .when('/category/:categoryName/:idProduct', {
 	        templateUrl: '../html_layouts/detail-product.html',
 	        controller: 'DetailRoute',
+	      })
+	      .when('/edit/products', {
+	        templateUrl: '../html_layouts/categories.html',
+	        controller: 'EditProductsRoute',
+	      })
+	      .when('/edit/product/:idProduct', {
+	        templateUrl: '../html_layouts/edit-current-product.html',
+	        controller: 'EditCurrentProductRoute',
 	      })
 	      .otherwise({
 	        redirectTo: '/'

@@ -18,16 +18,19 @@ exports.productsList = function() {
             "reviews": [
               {
                    "stars": 5,
+                   "reviewId": 0,
                    "body": "I love this gem!",
                    "author": "joe@example.org",
                    "createdOn": 1397490980837
                  }, {
                    "stars": 1,
+                   "reviewId": 1,
                    "body": "This gem sucks.",
                    "author": "tim@example.org",
                    "createdOn": 1397490980837
                  }, {
                    "stars": 5,
+                   "reviewId": 2,
                    "body": "This gem is my!",
                    "author": "serg_5nizza@mail.ru",
                    "createdOn": 1397490980837
@@ -52,13 +55,13 @@ exports.productsList = function() {
             "reviews": [
               {
                    "stars": 5,
-                   "productId": 1,
+                   "reviewId": 0,
                    "body": "I love this gem!",
                    "author": "joe@example.org",
                    "createdOn": 1397490980837
                  }, {
                    "stars": 1,
-                   "productId": 1,
+                   "reviewId": 1,
                    "body": "This gem sucks.",
                    "author": "tim@example.org",
                    "createdOn": 1397490980837
@@ -83,13 +86,13 @@ exports.productsList = function() {
             "reviews": [
               {
                    "stars": 5,
-                   "productId": 2,
+                   "reviewId": 0,
                    "body": "I love this gem!",
                    "author": "joe@example.org",
                    "createdOn": 1397490980837
                  }, {
                    "stars": 1,
-                   "productId": 2,
+                   "reviewId": 1,
                    "body": "This gem sucks.",
                    "author": "tim@example.org",
                    "createdOn": 1397490980837
@@ -113,16 +116,19 @@ exports.productsList = function() {
             "reviews": [
               {
                    "stars": 5,
+                   "reviewId": 0,
                    "body": "I love this gem!",
                    "author": "joe@example.org",
                    "createdOn": 1397490980837
                  }, {
                    "stars": 1,
+                   "reviewId": 1,
                    "body": "This gem sucks.",
                    "author": "tim@example.org",
                    "createdOn": 1397490980837
                  }, {
                    "stars": 5,
+                   "reviewId": 2,
                    "body": "This gem is my!",
                    "author": "serg_5nizza@mail.ru",
                    "createdOn": 1397490980837
@@ -146,16 +152,19 @@ exports.productsList = function() {
             "reviews": [
               {
                    "stars": 5,
+                   "reviewId": 0,
                    "body": "I love this gem!",
                    "author": "joe@example.org",
                    "createdOn": 1397490980837
                  }, {
                    "stars": 1,
+                   "reviewId": 1,
                    "body": "This gem sucks.",
                    "author": "tim@example.org",
                    "createdOn": 1397490980837
                  }, {
                    "stars": 5,
+                   "reviewId": 2,
                    "body": "This gem is my!",
                    "author": "serg_5nizza@mail.ru",
                    "createdOn": 1397490980837
@@ -179,16 +188,19 @@ exports.productsList = function() {
             "reviews": [
               {
                    "stars": 5,
+                   "reviewId": 0,
                    "body": "I love this gem!",
                    "author": "joe@example.org",
                    "createdOn": 1397490980837
                  }, {
                    "stars": 1,
+                   "reviewId": 1,
                    "body": "This gem sucks.",
                    "author": "tim@example.org",
                    "createdOn": 1397490980837
                  }, {
                    "stars": 5,
+                   "reviewId": 2,
                    "body": "This gem is my!",
                    "author": "serg_5nizza@mail.ru",
                    "createdOn": 1397490980837
