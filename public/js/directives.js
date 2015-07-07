@@ -14,4 +14,11 @@
 			templateUrl: '../html_layouts/item-product-in-list.html'
 		}
 	});
+
+	directivesModule.directive("itemProductReviews", function(){
+		return {
+			restrict: 'AE',
+			templateUrl: '../html_layouts/item-product-reviews.html'
+		}
+	});
 })();

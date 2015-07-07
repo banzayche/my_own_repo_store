@@ -12,25 +12,22 @@ exports.productsList = function() {
             "faces": 14,
             "images": [
               "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-02.gif",
-                "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-05.gif",
-                "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-09.gif"
+              "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-05.gif",
+              "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-09.gif"
             ],
             "reviews": [
               {
                    "stars": 5,
-                   "productId": 0,
                    "body": "I love this gem!",
                    "author": "joe@example.org",
                    "createdOn": 1397490980837
                  }, {
                    "stars": 1,
-                   "productId": 0,
                    "body": "This gem sucks.",
                    "author": "tim@example.org",
                    "createdOn": 1397490980837
                  }, {
                    "stars": 5,
-                   "productId": 0,
                    "body": "This gem is my!",
                    "author": "serg_5nizza@mail.ru",
                    "createdOn": 1397490980837
@@ -49,8 +46,8 @@ exports.productsList = function() {
             "faces": 12,
             "images": [
               "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-01.gif",
-                "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-03.gif",
-                "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-04.gif"
+              "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-03.gif",
+              "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-04.gif"
             ],
             "reviews": [
               {
@@ -79,9 +76,9 @@ exports.productsList = function() {
             "color": "#000",
             "faces": 6,
             "images": [
-                "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-06.gif",
-                "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-07.gif",
-                "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-10.gif"
+              "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-06.gif",
+              "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-07.gif",
+              "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-10.gif"
             ],
             "reviews": [
               {
@@ -110,25 +107,22 @@ exports.productsList = function() {
             "faces": 14,
             "images": [
               "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-02.gif",
-                "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-05.gif",
-                "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-09.gif"
+              "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-05.gif",
+              "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-09.gif"
             ],
             "reviews": [
               {
                    "stars": 5,
-                   "productId": 0,
                    "body": "I love this gem!",
                    "author": "joe@example.org",
                    "createdOn": 1397490980837
                  }, {
                    "stars": 1,
-                   "productId": 0,
                    "body": "This gem sucks.",
                    "author": "tim@example.org",
                    "createdOn": 1397490980837
                  }, {
                    "stars": 5,
-                   "productId": 0,
                    "body": "This gem is my!",
                    "author": "serg_5nizza@mail.ru",
                    "createdOn": 1397490980837
@@ -146,25 +140,22 @@ exports.productsList = function() {
             "faces": 14,
             "images": [
               "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-02.gif",
-                "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-05.gif",
-                "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-09.gif"
+              "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-05.gif",
+              "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-09.gif"
             ],
             "reviews": [
               {
                    "stars": 5,
-                   "productId": 0,
                    "body": "I love this gem!",
                    "author": "joe@example.org",
                    "createdOn": 1397490980837
                  }, {
                    "stars": 1,
-                   "productId": 0,
                    "body": "This gem sucks.",
                    "author": "tim@example.org",
                    "createdOn": 1397490980837
                  }, {
                    "stars": 5,
-                   "productId": 0,
                    "body": "This gem is my!",
                    "author": "serg_5nizza@mail.ru",
                    "createdOn": 1397490980837
@@ -182,25 +173,22 @@ exports.productsList = function() {
             "faces": 14,
             "images": [
               "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-02.gif",
-                "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-05.gif",
-                "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-09.gif"
+              "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-05.gif",
+              "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-09.gif"
             ],
             "reviews": [
               {
                    "stars": 5,
-                   "productId": 0,
                    "body": "I love this gem!",
                    "author": "joe@example.org",
                    "createdOn": 1397490980837
                  }, {
                    "stars": 1,
-                   "productId": 0,
                    "body": "This gem sucks.",
                    "author": "tim@example.org",
                    "createdOn": 1397490980837
                  }, {
                    "stars": 5,
-                   "productId": 0,
                    "body": "This gem is my!",
                    "author": "serg_5nizza@mail.ru",
                    "createdOn": 1397490980837

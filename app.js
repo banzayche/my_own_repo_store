@@ -30,23 +30,23 @@ app.get('/api/books', function(req, res) {
     res.json(books);
 });
 
-app.put('/api/books/:id/reviews/:date', function(req, res) {
-    // if(!req.params.id || !req.params.date) {
-    //     res.statusCode = 400;
-    //     return res.json({ msg: "Invalid params sent" });
-    // }
-    var newId= req.params.id;
-    var newDate= req.params.id;
+// app.put('/api/books/:id/reviews/:date', function(req, res) {
+//     // if(!req.params.id || !req.params.date) {
+//     //     res.statusCode = 400;
+//     //     return res.json({ msg: "Invalid params sent" });
+//     // }
+//     var newId= req.params.id;
+//     var newDate= req.params.id;
 
-    var newBodyView = req.body.body;
-    var newIndex = req.body.index;
-    // console.log(newBodyView);
-    // console.log(newId);
-    // console.log(newDate);
+//     var newBodyView = req.body.body;
+//     var newIndex = req.body.index;
+//     // console.log(newBodyView);
+//     // console.log(newId);
+//     // console.log(newDate);
 
-    books[newId].reviews[newIndex].body = newBodyView;
-    res.json(newBodyView);
-});
+//     books[newId].reviews[newIndex].body = newBodyView;
+//     res.json(newBodyView);
+// });
 
 // app.get('/api/books/:id', function(req, res) {
 //     var book = books.filter(function(book) { return book.id == req.params.id; })[0];
@@ -94,6 +94,21 @@ app.post('/api/books/:id/reviews', function(req, res) {
 
     books[newId].reviews.push(newBook);
     res.json(newBook);
+});
+
+app.delete('/api/books/:id/reviews/:index', function(req, res) {
+    var book = books.filter(function(book) { return book.id == req.params.id; })[0];
+
+    if(!book) {
+        res.statusCode = 404;
+        return res.json({ msg: "Book does not exist" });
+    }
+
+    book.reviews.splice(req.params.index, 1);
+
+    res.statusCode = 204;
+    res.send({});
+
 });
 
 // app.delete('/api/books/:id', function(req, res) {
