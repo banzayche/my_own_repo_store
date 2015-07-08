@@ -72,20 +72,28 @@ controllersModule.controller('EditProductsRoute', ['$scope', '$route', '$routePa
 	}
 }]);
 
-controllersModule.controller('EditCurrentProductRoute', ['$scope', '$route', '$routeParams', '$location', '$http', 'getNewId', 'newProductCreater', function ($scope, $route, $routeParams, $location, $http, getNewId, newProductCreater){
+controllersModule.controller('EditCurrentProductRoute', ['$scope', '$route', '$routeParams', '$location', '$http', 'getNewId', 'newProductCreater', '$rootScope', '_', 'identityProduct', function ($scope, $route, $routeParams, $location, $http, getNewId, newProductCreater, $rootScope, _, identityProduct){
 	var ifNew = true;
 	var	productId = $routeParams.idProduct;
+	var oldProduct = new Object();
+
 	if($routeParams.idProduct){
 		var currentProduct = _.filter($scope.products, function(itemProduct){ return itemProduct.id == productId;})[0];
 		var indexProduct = $scope.products.indexOf(currentProduct);
 		$scope.currentProduct = $scope.products[indexProduct];
 		ifNew = false;
+		identityProduct.identity(oldProduct, $scope.currentProduct);
 	} else{
 		console.log('new model')
 		productId = getNewId.id($scope.products);
 		$scope.currentProduct = newProductCreater.newProduct();
 		$scope.currentProduct.id = productId;
-	}
+		identityProduct.identity(oldProduct, $scope.currentProduct);
+	};
+
+	$scope.allPositionsToDefault = function(){
+		identityProduct.identity($scope.currentProduct, oldProduct);
+	};
 
 	$scope.saveProduct = function(){
 		if(ifNew){
