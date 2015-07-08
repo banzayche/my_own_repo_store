@@ -30,23 +30,23 @@ app.get('/api/books', function(req, res) {
     res.json(books);
 });
 
-// app.put('/api/books/:id/reviews/:date', function(req, res) {
-//     // if(!req.params.id || !req.params.date) {
-//     //     res.statusCode = 400;
-//     //     return res.json({ msg: "Invalid params sent" });
-//     // }
-//     var newId= req.params.id;
-//     var newDate= req.params.id;
+app.put('/api/books/:id', function(req, res) {
+    var book = books.filter(function(book) { return book.id == req.params.id; })[0];
+    var currentProductIndex = books.indexOf(book);
+    if(!book) {
+        res.statusCode = 404;
+        return res.json({ msg: "Book does not exist" });
+    }
 
-//     var newBodyView = req.body.body;
-//     var newIndex = req.body.index;
-//     // console.log(newBodyView);
-//     // console.log(newId);
-//     // console.log(newDate);
+    books[currentProductIndex] = req.body[0];
+    res.json(books[currentProductIndex]);
+});
 
-//     books[newId].reviews[newIndex].body = newBodyView;
-//     res.json(newBodyView);
-// });
+app.post('/api/books/:id', function(req, res) {
+    console.log(req.body[0]);
+    books.push(req.body[0]);
+    res.json(req.body[0]);
+});
 
 // app.get('/api/books/:id', function(req, res) {
 //     var book = books.filter(function(book) { return book.id == req.params.id; })[0];

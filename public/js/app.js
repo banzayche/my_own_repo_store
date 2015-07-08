@@ -28,6 +28,10 @@
 	        templateUrl: '../html_layouts/edit-current-product.html',
 	        controller: 'EditCurrentProductRoute',
 	      })
+	      .when('/edit/new-product', {
+	        templateUrl: '../html_layouts/edit-current-product.html',
+	        controller: 'EditCurrentProductRoute',
+	      })
 	      .otherwise({
 	        redirectTo: '/'
 	      });

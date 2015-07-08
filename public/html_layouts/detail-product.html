@@ -3,7 +3,7 @@
 	<div class="col-sm-4 col-md-4 col-xs-4">
 		<img ng-src="{{currentImg}}" />
 		<ul class="item-thing-galery">
-			<li ng-repeat="image in currentProduct.images"><img ng-click="clickImg(image)" ng-src="{{image}}"></li>
+			<li ng-repeat="image in currentProduct.images track by $index"><img ng-click="clickImg(image)" ng-src="{{image}}"></li>
 		</ul>
 	</div>
 	<div class="col-sm-8 col-md-8 col-xs-8">

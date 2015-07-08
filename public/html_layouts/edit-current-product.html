@@ -1,36 +1,69 @@
 <h2>Edit <b class="text-danger">{{currentProduct.name}}</b> product</h2>
-<h3 class="product-name text-center"><b>{{currentProduct.name}}</b> <b class="pull-right text-danger">{{currentProduct.price | currency}}</b></h3>
-<div class="col-sm-12 col-md-12 col-xs-12  detail-product">
+<div class="col-sm-12 col-md-12 col-xs-12  edit-product">
 	<!--  Review Form -->
-	<form class="col-md-12 col-sm-12 col-xs-12" name="reviewForm" ng-submit="reviewForm.$valid && addReview(currentProduct)" novalidate>
-		<div class="col-md-6 col-sm-6 col-xs-6">
-			<fieldset ng-repeat="image in currentProduct.images" class="form-group">
-				<label>{{currentProduct.images.indexOf(image)+1}} image</label>
-			    <input ng-model="image" type="text" class="form-control">
+	<form class="col-md-12 col-sm-12 col-xs-12" name="productForm" ng-submit="productForm.$valid && saveProduct()" novalidate>
+		<div class="col-sm-6 col-md-6 col-xs-6">
+			<fieldset class="form-group">
+				<label>Name</label>
+			    <input ng-model="currentProduct.name" type="text" class="form-control" required>
 			</fieldset>
 		</div>
-	</form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-	<div class="col-sm-8 col-md-8 col-xs-8">
-		<p>{{currentProduct.description}}</p>
-		<div class="col-sm-12 col-md-12 col-xs-12 haracters-product">
-			<div class="col-sm-6 col-md-6 col-xs-6"><b>shine: </b>{{currentProduct.shine}}</div>
-			<div class="col-sm-6 col-md-6 col-xs-6"><b>rarity: </b>{{currentProduct.rarity}}</div>
-			<div class="col-sm-6 col-md-6 col-xs-6"><b>faces: </b>{{currentProduct.faces}}</div>
-			<div class="col-sm-6 col-md-6 col-xs-6"><b>color: </b>{{currentProduct.color}}</div>
+		<div class="col-sm-6 col-md-6 col-xs-6">
+			<fieldset class="form-group">
+				<label>Category</label>
+			    <input ng-model="currentProduct.category" type="text" class="form-control" required>
+			</fieldset>
 		</div>
-	</div>
+		<div class="col-md-6 col-sm-6 col-xs-6">
+			<fieldset class="form-group">
+				<label>1 image href</label>
+			    <input ng-model="currentProduct.images[0]" type="text" class="form-control" required>
+			</fieldset>
+			<fieldset class="form-group">
+				<label>2 image href</label>
+			    <input ng-model="currentProduct.images[1]" type="text" class="form-control" required>
+			</fieldset>
+			<fieldset class="form-group">
+				<label>3 image href</label>
+			    <input ng-model="currentProduct.images[2]" type="text" class="form-control" required>
+			</fieldset>
+		</div>
+		<div class="col-md-6 col-sm-6 col-xs-6">
+			<fieldset class="form-group">
+				<label>Price</label>
+			    <input ng-model="currentProduct.price" type="number" min="1" class="form-control" required>
+			</fieldset>
+			<fieldset class="form-group">
+				<label>Description</label>
+			    <textarea rows="5" class="form-control" ng-model="currentProduct.description" required></textarea>
+			</fieldset>
+		</div>
+
+		<div class="col-md-6 col-sm-6 col-xs-6">
+			<fieldset class="form-group">
+				<label>Shine</label>
+			    <input ng-model="currentProduct.shine" type="number" min="1" class="form-control" required>
+			</fieldset>
+			<fieldset class="form-group">
+				<label>Faces</label>
+			    <input ng-model="currentProduct.faces" type="number" min="1" class="form-control" required>
+			</fieldset>
+		</div>
+		<div class="col-md-6 col-sm-6 col-xs-6">
+			<fieldset class="form-group">
+				<label>Rarity</label>
+			    <input ng-model="currentProduct.rarity" type="number" min="1" class="form-control" required>
+			</fieldset>
+			<fieldset class="form-group">
+				<label>Color</label>
+			    <input ng-model="currentProduct.color" type="text" class="form-control" required>
+			</fieldset>
+		</div>
+		<a ng-href="#/edit/products" class="btn btn-primary">Back to edit field</a>
+		<a ng-href="#/edit/products" class="btn btn-danger">Clear</a>
+		<button type="submit" class="btn btn-success pull-right">Save and Exit</button>
+	</form>
 </div>
-<a ng-href="#/edit/products" class="btn btn-primary pull-right">Back to edit field</a>
+
+
+

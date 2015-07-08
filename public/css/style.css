@@ -133,6 +133,9 @@ nav li ul>li>a:hover{
 	-moz-box-shadow: 1px 2px 2px grey;
 	-ms-box-shadow: 1px 2px 2px grey;
 }
+.edit-product{
+	overflow: auto;
+}
 .detail-product img{
 	width: 100%;
 }
