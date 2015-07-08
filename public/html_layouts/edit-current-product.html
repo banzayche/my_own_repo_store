@@ -1,1 +1,36 @@
-<h2>Edit current product</h2>
+<h2>Edit <b class="text-danger">{{currentProduct.name}}</b> product</h2>
+<h3 class="product-name text-center"><b>{{currentProduct.name}}</b> <b class="pull-right text-danger">{{currentProduct.price | currency}}</b></h3>
+<div class="col-sm-12 col-md-12 col-xs-12  detail-product">
+	<!--  Review Form -->
+	<form class="col-md-12 col-sm-12 col-xs-12" name="reviewForm" ng-submit="reviewForm.$valid && addReview(currentProduct)" novalidate>
+		<div class="col-md-6 col-sm-6 col-xs-6">
+			<fieldset ng-repeat="image in currentProduct.images" class="form-group">
+				<label>{{currentProduct.images.indexOf(image)+1}} image</label>
+			    <input ng-model="image" type="text" class="form-control">
+			</fieldset>
+		</div>
+	</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<div class="col-sm-8 col-md-8 col-xs-8">
+		<p>{{currentProduct.description}}</p>
+		<div class="col-sm-12 col-md-12 col-xs-12 haracters-product">
+			<div class="col-sm-6 col-md-6 col-xs-6"><b>shine: </b>{{currentProduct.shine}}</div>
+			<div class="col-sm-6 col-md-6 col-xs-6"><b>rarity: </b>{{currentProduct.rarity}}</div>
+			<div class="col-sm-6 col-md-6 col-xs-6"><b>faces: </b>{{currentProduct.faces}}</div>
+			<div class="col-sm-6 col-md-6 col-xs-6"><b>color: </b>{{currentProduct.color}}</div>
+		</div>
+	</div>
+</div>
+<a ng-href="#/edit/products" class="btn btn-primary pull-right">Back to edit field</a>

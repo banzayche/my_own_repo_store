@@ -20,8 +20,8 @@ controllersModule.controller('AllCategoryCtrl', ['$scope', '$route', '$routePara
 	$scope.categoryName = '';
 }]);
 
-controllersModule.controller('DetailRoute', ['$scope', '$route', '$routeParams', '$location', '$http', function ($scope, $route, $routeParams, $location, $http){
-	$scope.currentProduct = $scope.products[$routeParams.idProduct];
+controllersModule.controller('DetailRoute', ['$scope', '$route', '$routeParams', '$location', '$http', '_', function ($scope, $route, $routeParams, $location, $http, _){
+	$scope.currentProduct = _.filter($scope.products, function(itemProduct){ return itemProduct.id == $routeParams.idProduct;})[0];
 	$scope.currentImg = $scope.currentProduct.images[0];
 
 	$scope.clickImg = function(newSrc){
@@ -77,5 +77,5 @@ controllersModule.controller('EditProductsRoute', ['$scope', '$route', '$routePa
 }]);
 
 controllersModule.controller('EditCurrentProductRoute', ['$scope', '$route', '$routeParams', '$location', '$http', function ($scope, $route, $routeParams, $location, $http){
-	console.log('EditCurrentProductRoute');
+	$scope.currentProduct = _.filter($scope.products, function(itemProduct){ return itemProduct.id == $routeParams.idProduct;})[0];;
 }]);
