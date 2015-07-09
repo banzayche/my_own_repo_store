@@ -59,6 +59,15 @@
 			    <input ng-model="currentProduct.color" type="text" class="form-control" required>
 			</fieldset>
 		</div>
+		<div class="col-sm-12 col-md-12 col-xs-12">
+			<fieldset class="form-group">
+				<label>Product are not on stock?</label>
+			    <select ng-model="currentProduct.in_stock" class="form-control" required>
+			    	<option value="true">true</option>
+			    	<option value="false">false</option>
+			    </select>
+			</fieldset>
+		</div>
 		<a ng-href="#/edit/products" class="btn btn-primary">Back to edit field</a>
 		<a ng-click="allPositionsToDefault()" class="btn btn-danger">Clear</a>
 		<button type="submit" class="btn btn-success pull-right">Save and Exit</button>

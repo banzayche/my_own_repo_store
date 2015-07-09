@@ -14,8 +14,11 @@
 			<div class="col-sm-6 col-md-6 col-xs-6"><b>faces: </b>{{currentProduct.faces}}</div>
 			<div class="col-sm-6 col-md-6 col-xs-6"><b>color: </b>{{currentProduct.color}}</div>
 		</div>
+		<p class="text-danger" ng-show="missingProduct">Sorry, but <b ng-bind="currentProduct.name"></b> is not on our stock :(</p>
+		<button ng-disabled="missingProduct" ng-click="add_to_basket(currentProduct)" class="btn btn-success pull-right">Buy It right now {{currentProduct.in_stock}}</button>
 	</div>
 </div>
+
 <a ng-href="#/category/{{currentProduct.category}}" class="btn btn-primary pull-right">Back to category</a>
 
 

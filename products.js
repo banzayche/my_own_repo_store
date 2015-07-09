@@ -10,6 +10,7 @@ exports.productsList = function() {
             "rarity": 7,
             "color": "#CCC",
             "faces": 14,
+            "in_stock" : 'false',
             "images": [
               "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-02.gif",
               "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-05.gif",
@@ -47,6 +48,7 @@ exports.productsList = function() {
             "category": "fake",
             "color": "#EEE",
             "faces": 12,
+            "in_stock" : 'true',
             "images": [
               "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-01.gif",
               "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-03.gif",
@@ -78,6 +80,7 @@ exports.productsList = function() {
             "rarity": 2,
             "color": "#000",
             "faces": 6,
+            "in_stock" : 'true',
             "images": [
               "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-06.gif",
               "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-07.gif",
@@ -108,6 +111,7 @@ exports.productsList = function() {
             "rarity": 7,
             "color": "#CCC",
             "faces": 14,
+            "in_stock" : 'false',
             "images": [
               "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-02.gif",
               "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-05.gif",
@@ -144,6 +148,7 @@ exports.productsList = function() {
             "rarity": 7,
             "color": "#CCC",
             "faces": 14,
+            "in_stock" : 'true',
             "images": [
               "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-02.gif",
               "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-05.gif",
@@ -180,6 +185,7 @@ exports.productsList = function() {
             "rarity": 7,
             "color": "#CCC",
             "faces": 14,
+            "in_stock" : 'true',
             "images": [
               "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-02.gif",
               "http://dhg7upb7j7jqa.cloudfront.net/shaping_up_with_angular_js/assets/demo/images/gem-05.gif",

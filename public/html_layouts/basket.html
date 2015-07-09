@@ -1,0 +1,39 @@
+<h1>Hello! It is a your's Bascket</h1>
+<div class="col-sm-12 col-md-12 col-xs-12">
+	<div class="col-sm-4 col-md-4 col-xs-4">
+		<fieldset>
+			<span>Total products: <b class="text-danger h3">{{basketArray.length}}</b></span>
+		</fieldset>
+	</div>
+	<div class="col-sm-4 col-md-4 col-xs-4">
+		<fieldset>
+			<span>Price: <b class="text-danger h3">{{totalPrice | currency}}</b></span>
+		</fieldset>
+	</div>
+	<div class="col-sm-4 col-md-4 col-xs-4">
+		<fieldset>
+			<button class="btn btn-success" ng-click="buyAll()" ng-show="showBuyutton">Buy All</button>
+		</fieldset>
+	</div>
+</div>
+<div class="table-responsive col-sm-12 col-md-12 col-xs-12">
+	<table class="table-hover table">
+		<thead>
+			<tr class="text-center h3">
+				<td>Name</td>
+				<td>Rarity</td>
+				<td>Price</td>
+				<td>Delete</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-animate="'animate'" ng-repeat="product in basketArray | orderBy:orderProp track by $index">
+				<td class="h4"><a ng-href="#/category/{{product.category}}/{{product.id}}">{{product.name}}</a></td>
+				<td class="h4">{{product.rarity}}</td>
+				<td class="h4">{{product.price | currency}}</td>
+				<td class="text-center"><button ng-click="deleteProductBaket(product, basketArray)" class="btn btn-danger">X</button></td>
+			</tr>
+		</tbody>
+	</table>
+	<h1 class="text-center">{{congragulation}}</h1>
+</div>

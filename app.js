@@ -10,9 +10,14 @@ var books = require('./products');
 // присваеваем переменной то, что возвращает нам код в файле
 books = books.productsList();
 
+// Обращаемся к файлу tasks, который находится в этой же дирректории
+var basket = require('./basket');
+// присваеваем переменной то, что возвращает нам код в файле
+basket = basket.basketList();
+
 
 // переменная в которой происходит подсчет айди
-var nextId = books.length;
+// var nextId = books.length;
 
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
@@ -43,40 +48,9 @@ app.put('/api/books/:id', function(req, res) {
 });
 
 app.post('/api/books/:id', function(req, res) {
-    console.log(req.body[0]);
     books.push(req.body[0]);
     res.json(req.body[0]);
 });
-
-// app.get('/api/books/:id', function(req, res) {
-//     var book = books.filter(function(book) { return book.id == req.params.id; })[0];
-
-//     if(!book) {
-//         res.statusCode = 404;
-//         return res.json({ msg: "Book does not exist" });
-//     }
-
-//     res.json(book);
-// });
-
-// app.post('/api/books', function(req, res) {
-//     if(!req.body.author || !req.body.title) {
-//         res.statusCode = 400;
-//         return res.json({ msg: "Invalid params sent" });
-//     }
-
-//     var newBook = {
-//         author : req.body.author,
-//         title : req.body.title,
-//         year: req.body.year,
-//         genre: req.body.genre,
-//         description: req.body.description,
-//         id: nextId++
-//     };
-
-//     books.push(newBook);
-//     res.json(newBook);
-// });
 
 app.post('/api/books/:id/reviews', function(req, res) {
     if(!req.body.author || !req.body.body) {
@@ -125,19 +99,38 @@ app.delete('/api/books/:id', function(req, res) {
     res.send({});
 });
 
-// app.delete('/api/books/:id', function(req, res) {
-//     var book = books.filter(function(book) { return book.id == req.params.id; })[0];
+// BASKET
+app.get('/api/basket', function(req, res) {
+    res.json(basket);
+});
+app.post('/api/basket', function(req, res) {
+    basket.push(req.body[0]);
+    res.json(req.body[0]);
+});
+app.delete('/api/basket/:id', function(req, res) {
+    var book = basket.filter(function(book) { return book.id == req.params.id; })[0];
 
-//     if(!book) {
-//         res.statusCode = 404;
-//         return res.json({ msg: "Book does not exist" });
-//     }
+    if(!book) {
+        res.statusCode = 404;
+        return res.json({ msg: "Book does not exist" });
+    }
 
-//     books.splice(books.indexOf(book), 1);
+    basket.splice(basket.indexOf(book), 1);
 
-//     res.statusCode = 204;
-//     res.send({});
-// });
+    res.statusCode = 204;
+    res.send({});
+});
+app.delete('/api/basket/bought/:id', function(req, res) {
+    if(!basket) {
+        res.statusCode = 404;
+        return res.json({ msg: "Book does not exist" });
+    }
+
+    basket = [];
+
+    res.statusCode = 204;
+    res.send({});
+});
 
 // адресс порта
 app.listen(8300);

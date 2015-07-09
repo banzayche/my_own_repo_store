@@ -34,7 +34,7 @@
 	<fieldset class="form-group">
 	    <input ng-model="review.author" type="email" class="form-control" placeholder="jimmyDean@example.org" title="Email" required/>
 	</fieldset>
-	<p>{{reviewForm.$valid}}</p>
+	<p ng-hide="reviewForm.$valid" class="text-danger">Invalid params in form! Please check the form and click "Submit review" again.</p>
 	<fieldset class="form-group">
 	    <input type="submit" class="btn btn-primary pull-right" value="Submit Review" />
 	</fieldset>

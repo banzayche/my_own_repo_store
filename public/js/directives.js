@@ -1,3 +1,6 @@
+// /* Directives */
+'use strict';
+
 (function(){
 	var directivesModule = angular.module('directivesModule', []);
 
