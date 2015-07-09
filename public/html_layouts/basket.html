@@ -27,7 +27,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-animate="'animate'" ng-repeat="product in basketArray | orderBy:orderProp track by $index">
+			<tr class="text-center" ng-animate="'animate'" ng-repeat="product in basketArray | orderBy:orderProp track by $index">
 				<td class="h4"><a ng-href="#/category/{{product.category}}/{{product.id}}">{{product.name}}</a></td>
 				<td class="h4">{{product.rarity}}</td>
 				<td class="h4">{{product.price | currency}}</td>
@@ -35,5 +35,5 @@
 			</tr>
 		</tbody>
 	</table>
-	<h1 class="text-center">{{congragulation}}</h1>
+	<h1 class="text-center">{{congratulations}}</h1>
 </div>

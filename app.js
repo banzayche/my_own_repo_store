@@ -133,5 +133,5 @@ app.delete('/api/basket/bought/:id/delete', function(req, res) {
 });
 
 // адресс порта
-app.listen(8300);
-console.log('Server side has been started on http://localhost:8300')
+app.listen(8400);
+console.log('Server side has been started on http://localhost:8400')

@@ -135,7 +135,7 @@
 	}]);
 
 	controllersModule.controller('BasketRouteCtrl', ['$scope', '$route', '$routeParams', '$location', '$http', '$rootScope', '_', function ($scope, $route, $routeParams, $location, $http, $rootScope, _){
-		$scope.congragulation = "";
+		$scope.congratulations = "";
 		var countPrice = function(){
 			$scope.totalPrice = _.map($scope.basketArray, function(itemProduct){ return itemProduct.price; });
 			$scope.totalPrice = _.reduce($scope.totalPrice, function(memo, num){ return memo + num; }, 0);
@@ -163,7 +163,7 @@
 				$scope.basketArray.splice(0)
 				countPrice();
 				showButton();
-				$scope.congragulation = "Very nice choice!";
+				$scope.congratulations = "Very nice choice!";
 			});
 		};
 	}]);
