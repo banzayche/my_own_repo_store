@@ -120,7 +120,7 @@ app.delete('/api/basket/:id', function(req, res) {
     res.statusCode = 204;
     res.send({});
 });
-app.delete('/api/basket/bought/:id', function(req, res) {
+app.delete('/api/basket/bought/:id/delete', function(req, res) {
     if(!basket) {
         res.statusCode = 404;
         return res.json({ msg: "Book does not exist" });

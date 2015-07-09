@@ -142,27 +142,27 @@
 		};
 		countPrice();
 
-		var showBuyButton = function(){
-			$scope.showBuyutton = $scope.basketArray.length !== 0;
-			console.log($scope.showBuyutton)
+		var showButton = function(){
+			$scope.showButton = $scope.basketArray.length !== 0;
+			console.log($scope.showButton)
 		};
-		showBuyButton();
+		showButton();
 
 		$scope.deleteProductBaket = function(product, products){
 			$http.delete('/api/basket/'+product.id, []).success(function(data){
 				console.log('Deleted successfully! Pa-ra-ram-pam-pam:)');
 				products.splice(products.indexOf(product), 1);
 				countPrice();
-				showBuyButton();
+				showButton();
 			});
 		};
 
 		$scope.buyAll = function(){
-			$http.delete('/api/basket/bought/'+1, []).success(function(data){
+			$http.delete('/api/basket/bought/'+1+'/delete', []).success(function(data){
 				console.log('Deleted successfully! Pa-ra-ram-pam-pam:)');
-				$scope.basketArray = [];
+				$scope.basketArray.splice(0)
 				countPrice();
-				showBuyButton();
+				showButton();
 				$scope.congragulation = "Very nice choice!";
 			});
 		};
