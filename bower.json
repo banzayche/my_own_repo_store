@@ -10,6 +10,7 @@
   },
   "devDependencies": {
     "angular-animate": "~1.4.1",
-    "angular-ui": "~0.4.0"
+    "angular-ui": "~0.4.0",
+    "angular-mocks": "~1.4.2"
   }
 }

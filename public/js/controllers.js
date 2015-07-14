@@ -10,15 +10,14 @@
 		$scope.query = '';
 		$scope.orderProp = 'name';
 		$scope.limitPositions = 2;
-		$scope.basketArray = new Array();
+		$scope.basketArray;
 		$scope.totalPrice = 0;
+		$scope.products;
 		$http.get('/api/books').success(function(data){
 			$scope.products = data;
-			// console.log($scope.products);
 		});
 		$http.get('/api/basket').success(function(data){
 			$scope.basketArray = data;
-			console.log(data);
 		});
 	}]);
 
@@ -32,7 +31,7 @@
 		$scope.categoryName = '';
 	}]);
 
-	controllersModule.controller('DetailRoute', ['$scope', '$route', '$routeParams', '$location', '$http', '_', 'identificationProduct', function ($scope, $route, $routeParams, $location, $http, _, identificationProduct){
+	controllersModule.controller('DetailRoute', ['$scope', '$route', '$routeParams', '$location', '$http', 'identificationProduct', function ($scope, $route, $routeParams, $location, $http, identificationProduct){
 
 		$scope.currentProduct = identificationProduct.identification($scope.products, $routeParams.idProduct);
 		$scope.currentImg = $scope.currentProduct.images[0];
@@ -41,19 +40,22 @@
 
 
 		$scope.clickImg = function(newSrc){
-			$scope.currentImg = newSrc;
+			return $scope.currentImg = newSrc;
 		};
 
 		$scope.add_to_basket = function(product){
 			$http.post('/api/basket', [product]).success(function(data){
 				console.log('Product is saved to bsket successfully! Pa-ra-ram-pam-pam:)');
-				$scope.basketArray.push(product);
+				return $scope.basketArray.push(product);
 			});
 		};
 	}]);
 
 	controllersModule.controller('ReviewsCtrl', ['$scope', '$route', '$routeParams', '$location', '$http', function ($scope, $route, $routeParams, $location, $http){
 		$scope.review = {};
+		$scope.review.createdOn;
+		$scope.review.reviewId;
+		$scope.test;
 
 		$scope.addReview = function(product){
 		   	$scope.review.createdOn = Date.now();
@@ -63,7 +65,6 @@
 		   		$scope.review.reviewId = 0;
 		   	}
 
-
 		   	product.reviews.push($scope.review);
 
 			$http.post('/api/books/'+product.id+'/reviews', $scope.review).success(function(data){
@@ -71,14 +72,18 @@
 			});
 
 			$scope.review = {};
+
+			// for tests
+			return product.reviews.length;
 		};
 
 		$scope.deleteReview = function(product, reviewPosition){
-		   	product.reviews.splice(reviewPosition, 1);
-
 			$http.delete('/api/books/'+product.id+'/reviews/'+reviewPosition, []).success(function(data){
 				console.log('Deleted successfully! Pa-ra-ram-pam-pam:)');
+				product.reviews.splice(reviewPosition, 1);
 			});
+
+			return true;
 		}
 	}]);
 
@@ -92,45 +97,59 @@
 				console.log('Deleted successfully! Pa-ra-ram-pam-pam:)');
 				products.splice(products.indexOf(product), 1);
 			});
+
+			// for testing
+			return true;
 		}
 	}]);
 
 	controllersModule.controller('EditCurrentProductRoute', ['$scope', '$route', '$routeParams', '$location', '$http', 'getNewId', 'newProductCreater', '$rootScope', '_', 'identityProduct', 'identificationProduct', function ($scope, $route, $routeParams, $location, $http, getNewId, newProductCreater, $rootScope, _, identityProduct, identificationProduct){
-		var ifNew = true;
-		var	productId = $routeParams.idProduct;
-		var oldProduct = new Object();
+		$scope.ifNew;
+		$scope.productId = $routeParams.idProduct;
+		$scope.oldProduct = new Object();
 
-		if($routeParams.idProduct){
-			var currentProduct = identificationProduct.identification($scope.products, productId);
+		$scope.tests = getNewId.id($scope.products);
+
+		if($routeParams.idProduct >= 0){
+			var currentProduct = identificationProduct.identification($scope.products, $scope.productId);
 			var indexProduct = $scope.products.indexOf(currentProduct);
 			$scope.currentProduct = $scope.products[indexProduct];
-			ifNew = false;
-			identityProduct.identity(oldProduct, $scope.currentProduct);
-		} else{
-			console.log('new model')
-			productId = getNewId.id($scope.products);
+			$scope.ifNew = false;
+			identityProduct.identity($scope.oldProduct, $scope.currentProduct);
+		} else if($scope.products.length === 0){
+			$scope.ifNew = 'new empty';
+			$scope.productId = 0;
 			$scope.currentProduct = newProductCreater.newProduct();
-			$scope.currentProduct.id = productId;
-			identityProduct.identity(oldProduct, $scope.currentProduct);
+			$scope.currentProduct.id = $scope.productId;
+			identityProduct.identity($scope.oldProduct, $scope.currentProduct);
+		} else{
+			$scope.ifNew = true;
+			$scope.productId = getNewId.id($scope.products);
+			$scope.currentProduct = newProductCreater.newProduct();
+			$scope.currentProduct.id = $scope.productId;
+			identityProduct.identity($scope.oldProduct, $scope.currentProduct);
 		};
 
 		$scope.allPositionsToDefault = function(){
-			identityProduct.identity($scope.currentProduct, oldProduct);
+			identityProduct.identity($scope.currentProduct, $scope.oldProduct);
+
+			return true;
 		};
 
 		$scope.saveProduct = function(){
-			if(ifNew){
-				$http.post('/api/books/'+productId, [$scope.currentProduct]).success(function(data){
+			if($scope.ifNew){
+				$http.post('/api/books/'+$scope.productId, [$scope.currentProduct]).success(function(data){
 					console.log('Posted successfully! Pa-ra-ram-pam-pam:)');
 					$scope.products.push($scope.currentProduct);
 					$location.url('/edit/products');
 				});
 			} else{
-				$http.put('/api/books/'+productId, [$scope.currentProduct]).success(function(data){
+				$http.put('/api/books/'+$scope.productId, [$scope.currentProduct]).success(function(data){
 					console.log('Puted successfully! Pa-ra-ram-pam-pam:)');
 					$location.url('/edit/products');
 				});
 			}
+			return true;
 		}
 	}]);
 
@@ -144,7 +163,6 @@
 
 		var showButton = function(){
 			$scope.showButton = $scope.basketArray.length !== 0;
-			console.log($scope.showButton)
 		};
 		showButton();
 
@@ -154,7 +172,10 @@
 				products.splice(products.indexOf(product), 1);
 				countPrice();
 				showButton();
+				$scope.testProductsLength = products.length;
 			});
+
+			return product.id;
 		};
 
 		$scope.buyAll = function(){
@@ -165,6 +186,8 @@
 				showButton();
 				$scope.congratulations = "Very nice choice!";
 			});
+
+			return true;
 		};
 	}]);
 })();

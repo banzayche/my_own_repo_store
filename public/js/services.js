@@ -12,7 +12,6 @@
 			id : function(products){
 				var id = _.map(products, function(product){return product.id;});
 				id = Math.max.apply(null, id)+1;
-				console.log('Id created = '+id)
 				return id;
 			}
 		}
@@ -74,13 +73,4 @@
 			}
 		}
 	}]);
-
-	// var app = angular.module('urlGemServices', ['ngResource']);
-
-	// app.factory('Gems', ['$resource',
-	//   function($resource){
-	//     return $resource('api/books', {}, {
-	//       query: {method:'GET', isArray:true}
-	//     });
-	//   }]);
 })();
