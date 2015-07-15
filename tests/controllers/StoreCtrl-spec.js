@@ -16,8 +16,8 @@ describe('storeCtrl-Test', function(){
 
 			// --- подмена запроов ---
 
-			$httpBackend.expectGET('/api/books').respond([{name: 'nokia'}, {name: 'asus'}]);
-			$httpBackend.expectGET('/api/basket').respond([{name: 'nokia'}, {name: 'asus'}]);
+			$httpBackend.when('GET', '/api/books').respond([{name: 'nokia'}, {name: 'asus'}]);
+			$httpBackend.when('GET', '/api/basket').respond([{name: 'nokia'}, {name: 'asus'}]);
 
 			// --- подмена запроов ---
 
@@ -29,14 +29,18 @@ describe('storeCtrl-Test', function(){
 
 		// 1
 		it('should create "products" model without objects in StoreCtrl', function(){
+			$httpBackend.expectGET('/api/books');
 			expect(scope.products).toBeUndefined();
 			$httpBackend.flush();
+
 			expect(scope.products).toEqual([{name: 'nokia'}, {name: 'asus'}]);
 		});
 		// 2
 		it('should create "basket" model without objects in StoreCtrl', function(){
+			$httpBackend.expectGET('/api/basket');
 			expect(scope.basketArray).toBeUndefined();
 			$httpBackend.flush();
+
 			expect(scope.basketArray).toEqual([{name: 'nokia'}, {name: 'asus'}]);
 		});
 		// 3

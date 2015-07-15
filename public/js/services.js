@@ -62,6 +62,8 @@
 				_.each(product.images, function(image, index){ oldProduct.images[index] = image});
 
 				_.each(product.reviews, function(review, index){ oldProduct.reviews[index] = review});
+
+				return true;
 			}
 		}
 	}]);

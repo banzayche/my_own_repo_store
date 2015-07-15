@@ -51,20 +51,32 @@ describe('ReviewsCtrl-Test', function(){
 			expect(scope.review.createdOn).toBeUndefined();
 			expect(scope.review.reviewId).toBeUndefined();
 		});
-		// 2
+
+		// 2.1
 		it('checking the creation of reviews in ReviewsCtrl', function(){
-			$httpBackend.expectPOST('/api/books/1/reviews');
-			expect(scope.addReview(product)).toEqual(1);
-			$httpBackend.flush();
-			expect(product.reviews[0].reviewId).toEqual(0);
+			scope = rootScope.$new();
+			product = {name: 'testProduct', id: 1, reviews: [
+				{
+                   "stars": 1,
+                   "reviewId": 0,
+                   "body": "This gem sucks.",
+                   "author": "tim@example.org",
+                   "createdOn": 1397490980837
+                 }
+			]};
+			ctrl = controller('ReviewsCtrl', {$scope : scope});
 
-			product = productForTest;
-
+			expect(scope.addReview(product)).toEqual(true);
+			expect(product.reviews[1].reviewId).toEqual(1);
+		});
+		// 2.2
+		it('checking the second creation (vs http request) of reviews in ReviewsCtrl', function(){
 			$httpBackend.expectPOST('/api/books/1/reviews');
-			expect(scope.addReview(product)).toEqual(3);
+			expect(scope.addReview(product)).toEqual(true);
 			$httpBackend.flush();
 			expect(product.reviews[2].reviewId).toEqual(2);
 		});
+
 		// 3
 		it('checking the deleting of reviews in ReviewsCtrl', function(){
 			scope = rootScope.$new();

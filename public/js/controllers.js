@@ -48,6 +48,7 @@
 				console.log('Product is saved to bsket successfully! Pa-ra-ram-pam-pam:)');
 				return $scope.basketArray.push(product);
 			});
+			return true;
 		};
 	}]);
 
@@ -74,7 +75,7 @@
 			$scope.review = {};
 
 			// for tests
-			return product.reviews.length;
+			return true;
 		};
 
 		$scope.deleteReview = function(product, reviewPosition){
