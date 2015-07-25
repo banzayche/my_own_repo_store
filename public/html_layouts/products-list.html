@@ -2,4 +2,5 @@
 	<li ng-animate="'animate'" ng-repeat="product in products | filter:categoryName | filter:query | orderBy:orderProp | limitTo: limitPositions" class="item-product col-sm-6 col-md-6 col-xs-12">
 		<div item-product-in-list class="item-product-wrap"></div>
 	</li>
+  <button class="btn btn-success btn-large addTen" ng-hide="{{addNextProductHide}}"  ng-click="addTenProducts()">Add next 10 products {{addNextProductHide}}</button>
 </ul>
