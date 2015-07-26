@@ -23,18 +23,18 @@
 	        templateUrl: '/html_layouts/detail-product.html',
 	        controller: 'DetailRoute',
 	      })
-	      .when('/edit/products', {
-	        templateUrl: '/html_layouts/categories.html',
-	        controller: 'EditProductsRoute',
-	      })
-	      .when('/edit/product/:idProduct', {
-	        templateUrl: '/html_layouts/edit-current-product.html',
-	        controller: 'EditCurrentProductRoute',
-	      })
-	      .when('/edit/new-product', {
-	        templateUrl: '/html_layouts/edit-current-product.html',
-	        controller: 'EditCurrentProductRoute',
-	      })
+	      // .when('/edit/products', {
+	      //   templateUrl: '/html_layouts/categories.html',
+	      //   controller: 'EditProductsRoute',
+	      // })
+	      // .when('/edit/product/:idProduct', {
+	      //   templateUrl: '/html_layouts/edit-current-product.html',
+	      //   controller: 'EditCurrentProductRoute',
+	      // })
+	      // .when('/edit/new-product', {
+	      //   templateUrl: '/html_layouts/edit-current-product.html',
+	      //   controller: 'EditCurrentProductRoute',
+	      // })
 	      .when('/basket', {
 	        templateUrl: '/html_layouts/basket.html',
 	        controller: 'BasketRouteCtrl',

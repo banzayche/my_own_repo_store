@@ -16,12 +16,22 @@
 		$scope.totalPrice = 0;
 		$scope.products;
 		$http.get('/products.json').success(function(data){
-			console.log(data);
 			$scope.products = data;
 		});
 		$http.get('/basket.json').success(function(data){
 			$scope.basketArray = data;
 		});
+
+		$scope.add_to_basket = function(product){
+			// $http.post('/api/basket', [product]).success(function(data){
+			// 	console.log('Product is saved to bsket successfully! Pa-ra-ram-pam-pam:)');
+			// 	return $scope.basketArray.push(product);
+				$scope.basketArray.push(product);
+
+				alert(product.name+" Is very good choice!"+"Y want "+product.QuantityProduct+' of '+product.name+' It cost '+product.price*product.QuantityProduct+' dollars');
+			// });
+			return true;
+		};
 	}]);
 
 	controllersModule.controller('CategoryRoute', ['$scope', '$route', '$routeParams', '$location', '$http', '$filter', function ($scope, $route, $routeParams, $location, $http, $filter){
@@ -86,16 +96,16 @@
 			return $scope.currentImg = newSrc;
 		};
 
-		$scope.add_to_basket = function(product){
-			// $http.post('/api/basket', [product]).success(function(data){
-			// 	console.log('Product is saved to bsket successfully! Pa-ra-ram-pam-pam:)');
-			// 	return $scope.basketArray.push(product);
-				$scope.basketArray.push(product);
+		// $scope.add_to_basket = function(product){
+		// 	// $http.post('/api/basket', [product]).success(function(data){
+		// 	// 	console.log('Product is saved to bsket successfully! Pa-ra-ram-pam-pam:)');
+		// 	// 	return $scope.basketArray.push(product);
+		// 		$scope.basketArray.push(product);
 
-				alert(product.name+" Is very good choice!"+'It cost '+product.price+' dollars');
-			// });
-			return true;
-		};
+		// 		alert(product.name+" Is very good choice!"+'It cost '+product.price+' dollars');
+		// 	// });
+		// 	return true;
+		// };
 	}]);
 
 	controllersModule.controller('ReviewsCtrl', ['$scope', '$route', '$routeParams', '$location', '$http', function ($scope, $route, $routeParams, $location, $http){
@@ -134,84 +144,85 @@
 		}
 	}]);
 
-	controllersModule.controller('EditProductsRoute', ['$scope', '$route', '$routeParams', '$location', '$http', '_', function ($scope, $route, $routeParams, $location, $http, _){
-		$scope.limitPositions = 4;
-		$scope.addTenProducts = function(e){
-			$scope.limitPositions += 4;
-			$(e.target).css("background", "red");
-		};
+	// controllersModule.controller('EditProductsRoute', ['$scope', '$route', '$routeParams', '$location', '$http', '_', function ($scope, $route, $routeParams, $location, $http, _){
+	// 	$scope.limitPositions = 4;
+	// 	$scope.addTenProducts = function(e){
+	// 		$scope.limitPositions += 4;
+	// 		$(e.target).css("background", "red");
+	// 	};
 
-		$scope.categoryName = '';
-		$scope.displayEditButton = true;
+	// 	$scope.categoryName = '';
+	// 	$scope.displayEditButton = true;
 
-		$scope.deleteProduct = function(product, products){
-			// $http.delete('/api/books/'+product.id, []).success(function(data){
-			// 	console.log('Deleted successfully! Pa-ra-ram-pam-pam:)');
-				products.splice(products.indexOf(product), 1);
-			// });
+	// 	$scope.deleteProduct = function(product, products){
+	// 		// $http.delete('/api/books/'+product.id, []).success(function(data){
+	// 		// 	console.log('Deleted successfully! Pa-ra-ram-pam-pam:)');
+	// 			products.splice(products.indexOf(product), 1);
+	// 		// });
 
-			// for testing
-			return true;
-		}
-	}]);
+	// 		// for testing
+	// 		return true;
+	// 	}
+	// }]);
 
-	controllersModule.controller('EditCurrentProductRoute', ['$scope', '$route', '$routeParams', '$location', '$http', 'getNewId', 'newProductCreater', '$rootScope', '_', 'identityProduct', 'identificationProduct', function ($scope, $route, $routeParams, $location, $http, getNewId, newProductCreater, $rootScope, _, identityProduct, identificationProduct){
-		$scope.ifNew;
-		$scope.productId = $routeParams.idProduct;
-		$scope.oldProduct = new Object();
+	// controllersModule.controller('EditCurrentProductRoute', ['$scope', '$route', '$routeParams', '$location', '$http', 'getNewId', 'newProductCreater', '$rootScope', '_', 'identityProduct', 'identificationProduct', function ($scope, $route, $routeParams, $location, $http, getNewId, newProductCreater, $rootScope, _, identityProduct, identificationProduct){
+	// 	$scope.ifNew;
+	// 	$scope.productId = $routeParams.idProduct;
+	// 	$scope.oldProduct = new Object();
 
-		$scope.tests = getNewId.id($scope.products);
+	// 	$scope.tests = getNewId.id($scope.products);
 
-		if($routeParams.idProduct >= 0){
-			var currentProduct = identificationProduct.identification($scope.products, $scope.productId);
-			var indexProduct = $scope.products.indexOf(currentProduct);
-			$scope.currentProduct = $scope.products[indexProduct];
-			$scope.ifNew = false;
-			identityProduct.identity($scope.oldProduct, $scope.currentProduct);
-		} else if($scope.products.length === 0){
-			$scope.ifNew = 'new empty';
-			$scope.productId = 0;
-			$scope.currentProduct = newProductCreater.newProduct();
-			$scope.currentProduct.id = $scope.productId;
-			identityProduct.identity($scope.oldProduct, $scope.currentProduct);
-		} else{
-			$scope.ifNew = true;
-			$scope.productId = getNewId.id($scope.products);
-			$scope.currentProduct = newProductCreater.newProduct();
-			$scope.currentProduct.id = $scope.productId;
-			identityProduct.identity($scope.oldProduct, $scope.currentProduct);
-		};
+	// 	if($routeParams.idProduct >= 0){
+	// 		var currentProduct = identificationProduct.identification($scope.products, $scope.productId);
+	// 		var indexProduct = $scope.products.indexOf(currentProduct);
+	// 		$scope.currentProduct = $scope.products[indexProduct];
+	// 		$scope.ifNew = false;
+	// 		identityProduct.identity($scope.oldProduct, $scope.currentProduct);
+	// 	} else if($scope.products.length === 0){
+	// 		$scope.ifNew = 'new empty';
+	// 		$scope.productId = 0;
+	// 		$scope.currentProduct = newProductCreater.newProduct();
+	// 		$scope.currentProduct.id = $scope.productId;
+	// 		identityProduct.identity($scope.oldProduct, $scope.currentProduct);
+	// 	} else{
+	// 		$scope.ifNew = true;
+	// 		$scope.productId = getNewId.id($scope.products);
+	// 		$scope.currentProduct = newProductCreater.newProduct();
+	// 		$scope.currentProduct.id = $scope.productId;
+	// 		identityProduct.identity($scope.oldProduct, $scope.currentProduct);
+	// 	};
 
-		$scope.allPositionsToDefault = function(){
-			identityProduct.identity($scope.currentProduct, $scope.oldProduct);
+	// 	$scope.allPositionsToDefault = function(){
+	// 		identityProduct.identity($scope.currentProduct, $scope.oldProduct);
 
-			return true;
-		};
+	// 		return true;
+	// 	};
 
-		$scope.saveProduct = function(){
-			if($scope.ifNew){
-				// $http.post('/api/books/'+$scope.productId, [$scope.currentProduct]).success(function(data){
-				// 	console.log('Posted successfully! Pa-ra-ram-pam-pam:)');
-					$scope.products.push($scope.currentProduct);
-					$location.url('/edit/products');
-				// });
-			} else{
-				// $http.put('/api/books/'+$scope.productId, [$scope.currentProduct]).success(function(data){
-				// 	console.log('Puted successfully! Pa-ra-ram-pam-pam:)');
-					$location.url('/edit/products');
-				// });
-			}
-			return true;
-		}
-	}]);
+	// 	$scope.saveProduct = function(){
+	// 		if($scope.ifNew){
+	// 			// $http.post('/api/books/'+$scope.productId, [$scope.currentProduct]).success(function(data){
+	// 			// 	console.log('Posted successfully! Pa-ra-ram-pam-pam:)');
+	// 				$scope.products.push($scope.currentProduct);
+	// 				$location.url('/edit/products');
+	// 			// });
+	// 		} else{
+	// 			// $http.put('/api/books/'+$scope.productId, [$scope.currentProduct]).success(function(data){
+	// 			// 	console.log('Puted successfully! Pa-ra-ram-pam-pam:)');
+	// 				$location.url('/edit/products');
+	// 			// });
+	// 		}
+	// 		return true;
+	// 	}
+	// }]);
 
 	controllersModule.controller('BasketRouteCtrl', ['$scope', '$route', '$routeParams', '$location', '$http', '$rootScope', '_', function ($scope, $route, $routeParams, $location, $http, $rootScope, _){
 		$scope.congratulations = "";
 		var countPrice = function(){
 			$scope.totalPrice = _.map($scope.basketArray, function(itemProduct){ return itemProduct.price; });
-			$scope.totalPrice = _.reduce($scope.totalPrice, function(memo, num){ return memo + num; }, 0);
+			$scope.totalPrice = _.reduce($scope.totalPrice, function(memo, num){ return memo + (+num); }, 0);
 		};
 		countPrice();
+
 
 		var showButton = function(){
 			$scope.showButton = $scope.basketArray.length !== 0;

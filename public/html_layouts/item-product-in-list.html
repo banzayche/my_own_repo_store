@@ -1,8 +1,12 @@
-<h3 class="product-name">{{product.name}}</h3>
-<div class="col-sm-12 col-md-12 col-xs-12">
-	<div class="col-sm-4 col-md-4 col-xs-4"><img ng-src="{{product.images[0]}}" /></div>
-	<div class="col-sm-8 col-md-8 col-xs-8"><p>{{product.description}}</p></div>
-</div>
-<a ng-href="#/edit/product/{{product.id}}" class="btn btn-success" ng-show="displayEditButton">Edit</a>
-<a class="btn btn-danger" ng-click="deleteProduct(product, products)" ng-show="displayEditButton">Delete</a>
+<a ng-href="#/category/{{product.category}}/{{product.id}}">
+  <h3 class="product-name">{{product.name}}</h3>
+  <div class="col-sm-12 col-md-12 col-xs-12">
+    <div class="col-sm-4 col-md-4 col-xs-4"><img ng-src="{{product.images[0]}}" /></div>
+    <div class="col-sm-8 col-md-8 col-xs-8"><p>{{product.description}}</p></div>
+  </div>
+</a>
+<!-- <a ng-href="#/edit/product/{{product.id}}" class="btn btn-success" ng-show="displayEditButton">Edit</a> -->
+<button class="btn btn-success" ng-click="add_to_basket(product)">Add to basket</button>
+<input class="little-number-input" type="number" class="form-control" min="1" ng-init="product.QuantityProduct = 1" ng-model="product.QuantityProduct" />
+<!-- <a class="btn btn-danger" ng-click="deleteProduct(product, products)" ng-show="displayEditButton">Delete</a> -->
 <a ng-href="#/category/{{product.category}}/{{product.id}}" class="btn btn-primary pull-right">Detail</a>

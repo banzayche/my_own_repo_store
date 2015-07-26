@@ -16,6 +16,7 @@
 		</div>
 		<p class="text-danger" ng-show="missingProduct">Sorry, but <b ng-bind="currentProduct.name"></b> is not on our stock :(</p>
 		<button ng-disabled="missingProduct" ng-click="add_to_basket(currentProduct)" class="btn btn-success pull-right">Buy It right now {{currentProduct.in_stock}}</button>
+		<input class="little-number-input" type="number" class="form-control" min="1" ng-init="currentProduct.QuantityProduct = 1" ng-model="currentProduct.QuantityProduct" />
 	</div>
 </div>
 
