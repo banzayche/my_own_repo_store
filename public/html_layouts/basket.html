@@ -2,7 +2,7 @@
 <div class="col-sm-12 col-md-12 col-xs-12">
 	<div class="col-sm-4 col-md-4 col-xs-4">
 		<fieldset>
-			<span>Total products: <b class="text-danger h3">{{basketArray.length}}</b></span>
+			<span>Total products: <b class="text-danger h3">{{totalProduct}}</b></span>
 		</fieldset>
 	</div>
 	<div class="col-sm-4 col-md-4 col-xs-4">
@@ -29,7 +29,7 @@
 		<tbody>
 			<tr class="text-center" ng-animate="'animate'" ng-repeat="product in basketArray | orderBy:orderProp track by $index">
 				<td class="h4"><a ng-href="#/category/{{product.category}}/{{product.id}}">{{product.name}}</a></td>
-				<td class="h4">{{product.QuantityProduct}}</td>
+				<td class="h4"><input ng-click="clickQuantity()" ng-keyup="clickQuantity()" class="little-number-input" type="number" class="form-control" min="1" ng-model="product.QuantityProduct" /></td>
 				<td class="h4">{{product.price | currency}}</td>
 				<td class="text-center"><button ng-click="deleteProductBaket(product, basketArray)" class="btn btn-danger">X</button></td>
 			</tr>

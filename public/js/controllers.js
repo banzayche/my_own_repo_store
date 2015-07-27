@@ -23,14 +23,19 @@
 		});
 
 		$scope.add_to_basket = function(product){
-			// $http.post('/api/basket', [product]).success(function(data){
-			// 	console.log('Product is saved to bsket successfully! Pa-ra-ram-pam-pam:)');
-			// 	return $scope.basketArray.push(product);
-				$scope.basketArray.push(product);
+			var incomingProduct = angular.copy(product);
 
-				alert(product.name+" Is very good choice!"+"Y want "+product.QuantityProduct+' of '+product.name+' It cost '+product.price*product.QuantityProduct+' dollars');
-			// });
-			return true;
+			var createdProduct = _.where($scope.basketArray, {id: incomingProduct.id});
+			createdProduct = angular.copy(createdProduct);
+
+			if(createdProduct.length == 0){
+				$scope.basketArray.push(incomingProduct);
+			} else {
+				var objTest = _.filter($scope.basketArray, function(itemProduct){ return itemProduct.id == incomingProduct.id;})[0];
+				objTest.QuantityProduct = objTest.QuantityProduct+incomingProduct.QuantityProduct;
+			}
+
+			alert("Good choise "+incomingProduct.name+" was added to basket, it's very nice GEM!")
 		};
 	}]);
 
@@ -218,8 +223,11 @@
 	controllersModule.controller('BasketRouteCtrl', ['$scope', '$route', '$routeParams', '$location', '$http', '$rootScope', '_', function ($scope, $route, $routeParams, $location, $http, $rootScope, _){
 		$scope.congratulations = "";
 		var countPrice = function(){
-			$scope.totalPrice = _.map($scope.basketArray, function(itemProduct){ return itemProduct.price; });
+			$scope.totalPrice = _.map($scope.basketArray, function(itemProduct){ return itemProduct.price*itemProduct.QuantityProduct; });
 			$scope.totalPrice = _.reduce($scope.totalPrice, function(memo, num){ return memo + (+num); }, 0);
+
+			$scope.totalProduct = _.map($scope.basketArray, function(itemProduct){ return itemProduct.QuantityProduct; });
+			$scope.totalProduct = _.reduce($scope.totalProduct, function(memo, num){ return memo + (+num); }, 0);
 		};
 		countPrice();
 
@@ -228,6 +236,10 @@
 			$scope.showButton = $scope.basketArray.length !== 0;
 		};
 		showButton();
+
+		$scope.clickQuantity = function(){
+			countPrice();
+		};
 
 		$scope.deleteProductBaket = function(product, products){
 			// $http.delete('/api/basket/'+product.id, []).success(function(data){
