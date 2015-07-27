@@ -21,7 +21,7 @@
 		<thead>
 			<tr class="text-center h3">
 				<td>Name</td>
-				<td>Rarity</td>
+				<td>Quantity</td>
 				<td>Price</td>
 				<td>Delete</td>
 			</tr>
@@ -29,7 +29,7 @@
 		<tbody>
 			<tr class="text-center" ng-animate="'animate'" ng-repeat="product in basketArray | orderBy:orderProp track by $index">
 				<td class="h4"><a ng-href="#/category/{{product.category}}/{{product.id}}">{{product.name}}</a></td>
-				<td class="h4">{{product.rarity}}</td>
+				<td class="h4">{{product.QuantityProduct}}</td>
 				<td class="h4">{{product.price | currency}}</td>
 				<td class="text-center"><button ng-click="deleteProductBaket(product, basketArray)" class="btn btn-danger">X</button></td>
 			</tr>
